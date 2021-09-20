@@ -17,7 +17,7 @@ fileprivate struct Line: Shape {
 }
 
 fileprivate struct ChartLine: View {
-    let data: [(Double)]
+    let data: [Double]
     @Binding var frame: CGRect
     
     let padding:CGFloat = 3
@@ -86,13 +86,9 @@ fileprivate struct ChartLine: View {
 }
 
 struct ChartLineView: View {
-    var data: [(Double)]
+    var data: [Double]
     var title: String?
-    
-    public init(data: [Double], title: String? = nil) {
-        self.data = data
-        self.title = title
-    }
+    var height: CGFloat? = 200
     
     public var body: some View {
         GeometryReader{ geometry in
@@ -127,7 +123,7 @@ struct ChartLineView: View {
                     }
                     .padding(.vertical, 8)
                 }
-                .frame(height: 200)
+                .frame(height: height)
             }
         }
         .frame(height: .zero)
