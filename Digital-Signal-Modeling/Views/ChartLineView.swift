@@ -18,7 +18,7 @@ fileprivate struct Line: Shape {
 
 fileprivate struct ChartLine: View {
     let data: [Double]
-    @Binding var frame: CGRect
+    let frame: CGRect
     
     let padding:CGFloat = 3
     
@@ -112,8 +112,9 @@ struct ChartLineView: View {
                             .foregroundColor(Color.secondary.opacity(0.5))
                             .frame(height: 1)
                         GeometryReader{ reader in
-                            ChartLine(data: self.data,
-                                 frame: .constant(CGRect(x: 0, y: 0, width: reader.frame(in: .local).width , height: reader.frame(in: .local).height))
+                            ChartLine(
+                                data: self.data,
+                                frame: CGRect(x: 0, y: 0, width: reader.frame(in: .local).width , height: reader.frame(in: .local).height)
                             )
                         }
                         Line()
