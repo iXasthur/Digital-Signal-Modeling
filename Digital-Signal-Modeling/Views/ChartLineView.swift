@@ -78,9 +78,9 @@ fileprivate struct ChartLine: View {
     var body: some View {
         self.path
             .stroke(Color.green ,style: StrokeStyle(lineWidth: 3, lineJoin: .round))
-            .padding(.top, padding/2)
             .rotationEffect(.degrees(180), anchor: .center)
             .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+            .padding(.bottom, padding/2)
             .drawingGroup()
     }
 }
@@ -101,37 +101,31 @@ struct ChartLineView: View {
                     Text(self.title!)
                         .font(.title)
                 }
-                ZStack {
-                    HStack {
-                        VStack(alignment: .trailing) {
-                            Text(String(format: "%.2f", data.max()!))
-                                .font(.headline)
-                            Spacer()
-                            Text(String(format: "%.2f", data.min()!))
-                                .font(.headline)
-                        }
-                        
-                        VStack {
-                            Line()
-                                .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
-                                .foregroundColor(Color.secondary.opacity(0.5))
-                                .frame(height: 1)
-                            Spacer()
-                            Line()
-                                .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
-                                .foregroundColor(Color.secondary.opacity(0.5))
-                                .frame(height: 1)
-                        }
-                        .padding(.vertical, 8)
+                HStack {
+                    VStack(alignment: .trailing) {
+                        Text(String(format: "%.2f", data.max()!))
+                            .font(.headline)
+                        Spacer()
+                        Text(String(format: "%.2f", data.min()!))
+                            .font(.headline)
                     }
                     
-                    GeometryReader{ reader in
-                        ChartLine(data: self.data,
-                             frame: .constant(CGRect(x: 0, y: 0, width: reader.frame(in: .local).width , height: reader.frame(in: .local).height))
-                        )
+                    VStack(spacing: 0) {
+                        Line()
+                            .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
+                            .foregroundColor(Color.secondary.opacity(0.5))
+                            .frame(height: 1)
+                        GeometryReader{ reader in
+                            ChartLine(data: self.data,
+                                 frame: .constant(CGRect(x: 0, y: 0, width: reader.frame(in: .local).width , height: reader.frame(in: .local).height))
+                            )
+                        }
+                        Line()
+                            .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
+                            .foregroundColor(Color.secondary.opacity(0.5))
+                            .frame(height: 1)
                     }
                     .padding(.vertical, 8)
-                    .padding([.leading], 50)
                 }
                 .frame(height: 200)
             }
