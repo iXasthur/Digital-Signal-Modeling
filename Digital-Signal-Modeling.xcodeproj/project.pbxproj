@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		D0A1703826F8A190001608B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A1703726F8A190001608B9 /* ContentView.swift */; };
 		D0A1703A26F8A191001608B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A1703926F8A191001608B9 /* Assets.xcassets */; };
 		D0A1703D26F8A191001608B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A1703C26F8A191001608B9 /* Preview Assets.xcassets */; };
+		D0A1704A26F8A8EB001608B9 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D0A1704926F8A8EB001608B9 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A1704A26F8A8EB001608B9 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +89,9 @@
 			dependencies = (
 			);
 			name = "Digital-Signal-Modeling";
+			packageProductDependencies = (
+				D0A1704926F8A8EB001608B9 /* SwiftUICharts */,
+			);
 			productName = "Digital-Signal-Modeling";
 			productReference = D0A1703226F8A190001608B9 /* Digital-Signal-Modeling.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,9 @@
 				Base,
 			);
 			mainGroup = D0A1702926F8A190001608B9;
+			packageReferences = (
+				D0A1704826F8A8EB001608B9 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = D0A1703326F8A190001608B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -333,6 +341,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D0A1704826F8A8EB001608B9 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0A1704926F8A8EB001608B9 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0A1704826F8A8EB001608B9 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0A1702A26F8A190001608B9 /* Project object */;
 }
