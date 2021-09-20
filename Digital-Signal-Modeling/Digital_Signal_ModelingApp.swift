@@ -12,7 +12,7 @@ struct Digital_Signal_ModelingApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(minWidth: 400, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+                .frame(minWidth: 600, maxWidth: .infinity, minHeight: 450, maxHeight: .infinity)
         }
     }
 }

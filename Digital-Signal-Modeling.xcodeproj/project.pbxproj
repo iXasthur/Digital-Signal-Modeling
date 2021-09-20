@@ -3,18 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086969D26F8D8FC00A15DD8 /* SignalChart.swift */; };
+		D08696A226F8D99800A15DD8 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A126F8D99800A15DD8 /* Signal.swift */; };
+		D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A426F9330700A15DD8 /* ChartLineView.swift */; };
 		D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A1703526F8A190001608B9 /* Digital_Signal_ModelingApp.swift */; };
 		D0A1703826F8A190001608B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A1703726F8A190001608B9 /* ContentView.swift */; };
 		D0A1703A26F8A191001608B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A1703926F8A191001608B9 /* Assets.xcassets */; };
 		D0A1703D26F8A191001608B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A1703C26F8A191001608B9 /* Preview Assets.xcassets */; };
-		D0A1704A26F8A8EB001608B9 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D0A1704926F8A8EB001608B9 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D086969D26F8D8FC00A15DD8 /* SignalChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChart.swift; sourceTree = "<group>"; };
+		D08696A126F8D99800A15DD8 /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		D08696A426F9330700A15DD8 /* ChartLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineView.swift; sourceTree = "<group>"; };
 		D0A1703226F8A190001608B9 /* Digital-Signal-Modeling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital-Signal-Modeling.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A1703526F8A190001608B9 /* Digital_Signal_ModelingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digital_Signal_ModelingApp.swift; sourceTree = "<group>"; };
 		D0A1703726F8A190001608B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,13 +34,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0A1704A26F8A8EB001608B9 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D086969F26F8D97B00A15DD8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D08696A426F9330700A15DD8 /* ChartLineView.swift */,
+				D086969D26F8D8FC00A15DD8 /* SignalChart.swift */,
+				D0A1703726F8A190001608B9 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D08696A026F8D99000A15DD8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D08696A126F8D99800A15DD8 /* Signal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D0A1702926F8A190001608B9 = {
 			isa = PBXGroup;
 			children = (
@@ -55,8 +77,9 @@
 		D0A1703426F8A190001608B9 /* Digital-Signal-Modeling */ = {
 			isa = PBXGroup;
 			children = (
+				D08696A026F8D99000A15DD8 /* Models */,
+				D086969F26F8D97B00A15DD8 /* Views */,
 				D0A1703526F8A190001608B9 /* Digital_Signal_ModelingApp.swift */,
-				D0A1703726F8A190001608B9 /* ContentView.swift */,
 				D0A1703926F8A191001608B9 /* Assets.xcassets */,
 				D0A1703E26F8A191001608B9 /* Info.plist */,
 				D0A1703F26F8A191001608B9 /* Digital_Signal_Modeling.entitlements */,
@@ -90,7 +113,6 @@
 			);
 			name = "Digital-Signal-Modeling";
 			packageProductDependencies = (
-				D0A1704926F8A8EB001608B9 /* SwiftUICharts */,
 			);
 			productName = "Digital-Signal-Modeling";
 			productReference = D0A1703226F8A190001608B9 /* Digital-Signal-Modeling.app */;
@@ -120,7 +142,6 @@
 			);
 			mainGroup = D0A1702926F8A190001608B9;
 			packageReferences = (
-				D0A1704826F8A8EB001608B9 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = D0A1703326F8A190001608B9 /* Products */;
 			projectDirPath = "";
@@ -149,7 +170,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A1703826F8A190001608B9 /* ContentView.swift in Sources */,
+				D08696A226F8D99800A15DD8 /* Signal.swift in Sources */,
 				D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */,
+				D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */,
+				D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,25 +365,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D0A1704826F8A8EB001608B9 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.5;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D0A1704926F8A8EB001608B9 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D0A1704826F8A8EB001608B9 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0A1702A26F8A190001608B9 /* Project object */;
 }
