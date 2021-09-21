@@ -9,12 +9,11 @@ import SwiftUI
 
 struct SignalChart: View {
     
-    let count = 256
+    private let count = 512
     
-    let signal: Signal
+    let signal: HarmonicSignal
     
     var body: some View {
-        ChartLineView(data: signal.getValues(count), title: signal.name)
-            .background(Color.blue)
+        ChartLineView(data: signal.getValues(count), title: nil, height: 200)
     }
 }

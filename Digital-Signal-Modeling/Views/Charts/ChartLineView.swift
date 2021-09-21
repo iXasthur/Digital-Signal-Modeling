@@ -124,9 +124,8 @@ struct ChartLineView: View {
                     }
                     .padding(.vertical, 8)
                 }
-                .frame(height: height)
             }
         }
-        .frame(height: .zero)
+        .frame(height: height)
     }
 }
