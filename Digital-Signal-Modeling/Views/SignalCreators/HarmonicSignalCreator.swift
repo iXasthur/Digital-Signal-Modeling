@@ -51,8 +51,6 @@ struct HarmonicSignalCreator: View {
     }
     
     func updateSignal() {
-        print("Updating harmonic signal")
-        
         switch selectedSignalType {
         case .sine:
             signal = HarmonicSignal.createSine(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
