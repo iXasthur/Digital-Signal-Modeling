@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D00A417126FA6B1000ACE6E2 /* HarmonicSignalCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417026FA6B1000ACE6E2 /* HarmonicSignalCreator.swift */; };
+		D00A417426FA70AC00ACE6E2 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417326FA70AC00ACE6E2 /* ColorExtensions.swift */; };
+		D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417526FA70F400ACE6E2 /* CustomTabView.swift */; };
 		D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086969D26F8D8FC00A15DD8 /* SignalChart.swift */; };
 		D08696A226F8D99800A15DD8 /* HarmonicSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */; };
 		D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A426F9330700A15DD8 /* ChartLineView.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		D00A417026FA6B1000ACE6E2 /* HarmonicSignalCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicSignalCreator.swift; sourceTree = "<group>"; };
+		D00A417326FA70AC00ACE6E2 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		D00A417526FA70F400ACE6E2 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		D086969D26F8D8FC00A15DD8 /* SignalChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChart.swift; sourceTree = "<group>"; };
 		D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicSignal.swift; sourceTree = "<group>"; };
 		D08696A426F9330700A15DD8 /* ChartLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineView.swift; sourceTree = "<group>"; };
@@ -48,11 +52,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D00A417226FA709B00ACE6E2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D00A417326FA70AC00ACE6E2 /* ColorExtensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D00A417726FA72E000ACE6E2 /* TabViews */ = {
+			isa = PBXGroup;
+			children = (
+				D00A417526FA70F400ACE6E2 /* CustomTabView.swift */,
+			);
+			path = TabViews;
+			sourceTree = "<group>";
+		};
+		D00A417826FA735C00ACE6E2 /* SignalCreators */ = {
+			isa = PBXGroup;
+			children = (
+				D00A417026FA6B1000ACE6E2 /* HarmonicSignalCreator.swift */,
+			);
+			path = SignalCreators;
+			sourceTree = "<group>";
+		};
 		D086969F26F8D97B00A15DD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D00A417826FA735C00ACE6E2 /* SignalCreators */,
+				D00A417726FA72E000ACE6E2 /* TabViews */,
 				D08696AA26F93FE500A15DD8 /* Charts */,
-				D00A417026FA6B1000ACE6E2 /* HarmonicSignalCreator.swift */,
 				D08696A626F93F1600A15DD8 /* HarmonicSignalsView.swift */,
 				D08696A826F93F3700A15DD8 /* PolyharmonicSignalsView.swift */,
 				D0A1703726F8A190001608B9 /* ContentView.swift */,
@@ -99,6 +128,7 @@
 			children = (
 				D08696A026F8D99000A15DD8 /* Models */,
 				D086969F26F8D97B00A15DD8 /* Views */,
+				D00A417226FA709B00ACE6E2 /* Utils */,
 				D0A1703526F8A190001608B9 /* Digital_Signal_ModelingApp.swift */,
 				D0A1703926F8A191001608B9 /* Assets.xcassets */,
 				D0A1703E26F8A191001608B9 /* Info.plist */,
@@ -190,11 +220,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A1703826F8A190001608B9 /* ContentView.swift in Sources */,
+				D00A417426FA70AC00ACE6E2 /* ColorExtensions.swift in Sources */,
 				D08696A226F8D99800A15DD8 /* HarmonicSignal.swift in Sources */,
 				D08696A926F93F3700A15DD8 /* PolyharmonicSignalsView.swift in Sources */,
 				D00A417126FA6B1000ACE6E2 /* HarmonicSignalCreator.swift in Sources */,
 				D08696AC26F9413700A15DD8 /* SignalType.swift in Sources */,
 				D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */,
+				D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */,
 				D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */,
 				D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */,
 				D08696A726F93F1600A15DD8 /* HarmonicSignalsView.swift in Sources */,

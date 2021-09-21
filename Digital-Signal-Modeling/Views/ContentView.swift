@@ -9,7 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HarmonicSignalsView()
-            .padding()
+        CustomTabView(
+            tabBarPosition: .bottom,
+            content: [
+                (
+                    "Harmonic",
+                    "bolt.horizontal",
+                    AnyView(
+                        HarmonicSignalsView()
+                            .padding()
+                    )
+                ),
+                (
+                    "Polyharmonic",
+                    "network",
+                    AnyView(
+                        PolyharmonicSignalsView()
+                            .padding()
+                    )
+                )
+            ]
+        )
     }
 }
