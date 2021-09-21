@@ -40,36 +40,39 @@ struct HarmonicSignal {
         return HarmonicSignal(
             formula: { (count: Int, n: Int) -> Double in
                 let t = Double(n) / Double(count)
-                
                 let phase = (startPhase + 2 * Double.pi * t * frequency).truncatingRemainder(dividingBy: 2 * Double.pi)
-                
-                print(phase)
-                
                 return phase <= duty ? 1.0 : -1.0
             })
     }
     
-    static func createTriangle(amplitude: Double, frequency: Double) -> HarmonicSignal {
+    static func createTriangle(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
         let period = 1 / frequency
         
         return HarmonicSignal(
             formula: { (count: Int, n: Int) -> Double in
                 let t = Double(n) / Double(count)
                 let v0 = 2 * amplitude / Double.pi
-                let v1 = asin(sin(2 * Double.pi / period * t))
+                let v1 = asin(sin(2 * Double.pi / period * t + startPhase))
                 return v0 * v1
             })
     }
     
-    static func createSaw(amplitude: Double, frequency: Double) -> HarmonicSignal {
+    static func createSaw(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
         let period = 1 / frequency
         
         return HarmonicSignal(
             formula: { (count: Int, n: Int) -> Double in
                 let x = Double(n) / Double(count)
                 let v0 = 2 * amplitude / Double.pi
-                let v1 = atan(tan(Double.pi * x / period))
+                let v1 = atan(tan(Double.pi * x / period + startPhase/2))
                 return v0 * v1
+            })
+    }
+    
+    static func createNoise(amplitude: Double) -> HarmonicSignal {
+        return HarmonicSignal(
+            formula: { (_: Int, _: Int) -> Double in
+                return Double.random(in: -amplitude...amplitude)
             })
     }
 }

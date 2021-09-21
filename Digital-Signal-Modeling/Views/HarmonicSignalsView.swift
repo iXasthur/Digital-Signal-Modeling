@@ -12,6 +12,7 @@ struct HarmonicSignalsView: View {
 //    @State private var amplitude: Double = 1
 //    @State private var startPhase: Double = 0
 //    @State private var frequency: Double = 1
+//    @State private var dutyPercentage: Double = 0.2
     
     @State private var selectedSignalType = SignalType.noise
     @State private var signal: HarmonicSignal = HarmonicSignal.createDefault()
@@ -25,11 +26,11 @@ struct HarmonicSignalsView: View {
         case .impulse:
             signal = HarmonicSignal.createImpulse(amplitude: 1, startPhase: 0, frequency: 1, duty: 2 * Double.pi * 0.5)
         case .triangle:
-            signal = HarmonicSignal.createTriangle(amplitude: 1, frequency: 1)
+            signal = HarmonicSignal.createTriangle(amplitude: 1, startPhase: 0, frequency: 1)
         case .saw:
-            signal = HarmonicSignal.createSaw(amplitude: 1, frequency: 1)
+            signal = HarmonicSignal.createSaw(amplitude: 1, startPhase: 0, frequency: 1)
         case .noise:
-            signal = HarmonicSignal.createDefault()
+            signal = HarmonicSignal.createNoise(amplitude: 1)
         }
     }
     
