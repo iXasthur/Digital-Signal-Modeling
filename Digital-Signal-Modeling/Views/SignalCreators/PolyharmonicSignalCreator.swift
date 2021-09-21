@@ -80,16 +80,16 @@ struct PolyharmonicSignalCreator: View {
                     
                     Spacer()
                     
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "pencil")
-                            .font(.headline)
-                            .foregroundColor(.accentColor)
-                            .frame(width: 20, height: 20, alignment: .trailing)
-                            .contentShape(Rectangle())
-                    }
-                    .buttonStyle(PlainButtonStyle())
+//                    Button {
+//
+//                    } label: {
+//                        Image(systemName: "pencil")
+//                            .font(.headline)
+//                            .foregroundColor(.accentColor)
+//                            .frame(width: 20, height: 20, alignment: .trailing)
+//                            .contentShape(Rectangle())
+//                    }
+//                    .buttonStyle(PlainButtonStyle())
                     
                     Button {
                         signal.signals.remove(at: i)
