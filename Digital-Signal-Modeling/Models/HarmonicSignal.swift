@@ -41,7 +41,7 @@ struct HarmonicSignal {
             formula: { (count: Int, n: Int) -> Double in
                 let t = Double(n) / Double(count)
                 let phase = (startPhase + 2 * Double.pi * t * frequency).truncatingRemainder(dividingBy: 2 * Double.pi)
-                return phase <= duty ? 1.0 : -1.0
+                return phase <= duty ? amplitude : -amplitude
             })
     }
     
