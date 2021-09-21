@@ -99,10 +99,10 @@ struct ChartLineView: View {
                 }
                 HStack {
                     VStack(alignment: .trailing) {
-                        Text(String(format: "%.2f", data.max()!))
+                        Text(String(format: "%.2f", data.max() ?? 0))
                             .font(.headline)
                         Spacer()
-                        Text(String(format: "%.2f", data.min()!))
+                        Text(String(format: "%.2f", data.min() ?? 0))
                             .font(.headline)
                     }
                     

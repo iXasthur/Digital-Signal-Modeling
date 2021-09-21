@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+fileprivate enum SignalType: String, CaseIterable, Identifiable {
+    case sine
+    case impulse
+    case triangle
+    case saw
+    case noise
+
+    var id: String { self.rawValue }
+}
+
 struct HarmonicSignalCreator: View {
     
     static let minParamLabelWidth: CGFloat = 72

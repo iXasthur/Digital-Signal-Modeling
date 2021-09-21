@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct HarmonicSignal {
-    var name: String = "Sin"
+struct HarmonicSignal: Signal {
+    var name: String = "Harmonic signal"
     
     var formula: (_ count: Int, _ n: Int) -> Double
     
     func getValues(_ count: Int) -> [Double] {
         var values: [Double] = []
-        for n in 0...count {
+        for n in 0..<count {
             values.append(formula(count, n))
         }
         return values
