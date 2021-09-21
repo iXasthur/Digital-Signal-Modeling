@@ -27,6 +27,14 @@ struct ContentView: View {
                         PolyharmonicSignalsView()
                             .padding()
                     )
+                ),
+                (
+                    "Modulated",
+                    "dot.radiowaves.left.and.right",
+                    AnyView(
+                        ModulatedSignalsView()
+                            .padding()
+                    )
                 )
             ]
         )
