@@ -13,10 +13,10 @@ struct PolyharmonicSignalsView: View {
     
     var body: some View {
         VStack {
-            PolyharmonicSignalCreator(signal: $signal)
+            SignalChart(signal: signal)
                 .padding(.top, 10)
             
-            SignalChart(signal: signal)
+            PolyharmonicSignalCreator(signal: $signal)
                 .padding(.top, 10)
             
             Spacer()

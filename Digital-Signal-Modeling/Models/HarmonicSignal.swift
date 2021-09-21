@@ -28,8 +28,11 @@ struct HarmonicSignal: Signal {
         )
     }
     
-    static func createSin(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
+    static func createSine(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
+        let name = "Sine (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)))"
+        
         return HarmonicSignal(
+            name: name,
             formula: { (count: Int, n: Int) -> Double in
                 let t = Double(n) / Double(count)
                 return amplitude * sin((2 * Double.pi * frequency * t) + startPhase)
@@ -37,7 +40,11 @@ struct HarmonicSignal: Signal {
     }
     
     static func createImpulse(amplitude: Double, startPhase: Double, frequency: Double, duty: Double) -> HarmonicSignal {
+        
+        let name = "Impulse (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)), d: \(String(format: "%.2f", duty)))"
+        
         return HarmonicSignal(
+            name: name,
             formula: { (count: Int, n: Int) -> Double in
                 let t = Double(n) / Double(count)
                 let phase = (startPhase + 2 * Double.pi * t * frequency).truncatingRemainder(dividingBy: 2 * Double.pi)
@@ -48,7 +55,10 @@ struct HarmonicSignal: Signal {
     static func createTriangle(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
         let period = 1 / frequency
         
+        let name = "Triangle (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)))"
+        
         return HarmonicSignal(
+            name: name,
             formula: { (count: Int, n: Int) -> Double in
                 let t = Double(n) / Double(count)
                 let v0 = 2 * amplitude / Double.pi
@@ -60,7 +70,10 @@ struct HarmonicSignal: Signal {
     static func createSaw(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
         let period = 1 / frequency
         
+        let name = "Saw (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)))"
+        
         return HarmonicSignal(
+            name: name,
             formula: { (count: Int, n: Int) -> Double in
                 let x = Double(n) / Double(count)
                 let v0 = 2 * amplitude / Double.pi
@@ -70,7 +83,10 @@ struct HarmonicSignal: Signal {
     }
     
     static func createNoise(amplitude: Double) -> HarmonicSignal {
+        let name = "Noise (a: \(String(format: "%.2f", amplitude)))"
+        
         return HarmonicSignal(
+            name: name,
             formula: { (_: Int, _: Int) -> Double in
                 return Double.random(in: -amplitude...amplitude)
             })

@@ -20,7 +20,7 @@ fileprivate struct SheetView: View {
                     isPresented.toggle()
                     NSApp.mainWindow?.endSheet(NSApp.keyWindow!)
                 } label: {
-                    Image(systemName: "chevron.backward")
+                    Image(systemName: "xmark")
                         .font(.headline)
                         .foregroundColor(.red)
                         .frame(width: 20, height: 20, alignment: .leading)
@@ -70,10 +70,46 @@ struct PolyharmonicSignalCreator: View {
     @Binding var signal: PolyharmonicSignal
     
     var body: some View {
-        Button {
-            showingSheet.toggle()
-        } label: {
-            Text("+")
+        VStack {
+            ForEach((0..<signal.signals.count), id: \.self) {
+                let i = $0
+                let s = signal.signals[i]
+                
+                HStack {
+                    Text("\(s.name)")
+                    
+                    Spacer()
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "pencil")
+                            .font(.headline)
+                            .foregroundColor(.accentColor)
+                            .frame(width: 20, height: 20, alignment: .trailing)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    Button {
+                        signal.signals.remove(at: i)
+                    } label: {
+                        Image(systemName: "minus")
+                            .font(.headline)
+                            .foregroundColor(.red)
+                            .frame(width: 20, height: 20, alignment: .trailing)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+            
+            Button {
+                showingSheet.toggle()
+            } label: {
+                Text("Add signal")
+            }
+            .padding(.top, 10)
         }
         .sheet(isPresented: $showingSheet) {
             SheetView(isPresented: $showingSheet, signal: $signal)
