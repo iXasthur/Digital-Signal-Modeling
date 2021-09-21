@@ -13,7 +13,7 @@ struct HarmonicSignalsView: View {
 //    @State private var startPhase: Double = 0
 //    @State private var frequency: Double = 1
     
-    @State private var selectedSignalType = SignalType.impulse
+    @State private var selectedSignalType = SignalType.noise
     @State private var signal: HarmonicSignal = HarmonicSignal.createDefault()
     
     func updateSignal() {
@@ -23,7 +23,7 @@ struct HarmonicSignalsView: View {
         case .sine:
             signal = HarmonicSignal.createSin(amplitude: 1, startPhase: 0, frequency: 1)
         case .impulse:
-            signal = HarmonicSignal.createImpulse(amplitude: 1, frequency: 1, duty: 1)
+            signal = HarmonicSignal.createImpulse(amplitude: 1, startPhase: 0, frequency: 1, duty: 2 * Double.pi * 0.5)
         case .triangle:
             signal = HarmonicSignal.createTriangle(amplitude: 1, frequency: 1)
         case .saw:

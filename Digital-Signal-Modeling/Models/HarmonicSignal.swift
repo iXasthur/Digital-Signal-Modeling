@@ -31,27 +31,21 @@ struct HarmonicSignal {
     static func createSin(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
         return HarmonicSignal(
             formula: { (count: Int, n: Int) -> Double in
-                return amplitude * sin((2 * Double.pi * frequency * Double(n))/Double(count) + startPhase)
+                let t = Double(n) / Double(count)
+                return amplitude * sin((2 * Double.pi * frequency * t) + startPhase)
             })
     }
     
-    static func createImpulse(amplitude: Double, frequency: Double, duty: Double) -> HarmonicSignal {
-        let period = 1 / frequency
-        
-        let h: (Double) -> Double = { x in
-            return x > 0 ? 1 : 0
-        }
-        
+    static func createImpulse(amplitude: Double, startPhase: Double, frequency: Double, duty: Double) -> HarmonicSignal {
         return HarmonicSignal(
             formula: { (count: Int, n: Int) -> Double in
-                let x = Double(n) / Double(count)
-
-                var s: Double = 0
-                for n in stride(from: -50, to: 50, by: 1) {
-                    s = s + (h((x / period) - Double(n)) - h((x / period) - Double(n) - (1 / duty)))
-                }
+                let t = Double(n) / Double(count)
                 
-                return 2 * amplitude * s - 1
+                let phase = (startPhase + 2 * Double.pi * t * frequency).truncatingRemainder(dividingBy: 2 * Double.pi)
+                
+                print(phase)
+                
+                return phase <= duty ? 1.0 : -1.0
             })
     }
     
@@ -60,9 +54,9 @@ struct HarmonicSignal {
         
         return HarmonicSignal(
             formula: { (count: Int, n: Int) -> Double in
-                let x = Double(n) / Double(count)
+                let t = Double(n) / Double(count)
                 let v0 = 2 * amplitude / Double.pi
-                let v1 = asin(sin(2 * Double.pi / period * x))
+                let v1 = asin(sin(2 * Double.pi / period * t))
                 return v0 * v1
             })
     }
