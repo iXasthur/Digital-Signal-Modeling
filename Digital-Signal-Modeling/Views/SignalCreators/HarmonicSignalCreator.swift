@@ -57,7 +57,7 @@ struct HarmonicSignalCreator: View {
         case .sine:
             signal = HarmonicSignal.createSine(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
         case .impulse:
-            signal = HarmonicSignal.createImpulse(amplitude: amplitude, startPhase: startPhase, frequency: frequency, duty: 2 * Double.pi * dutyPercentage)
+            signal = HarmonicSignal.createImpulse(amplitude: amplitude, startPhase: startPhase, frequency: frequency, duty: dutyPercentage)
         case .triangle:
             signal = HarmonicSignal.createTriangle(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
         case .saw:

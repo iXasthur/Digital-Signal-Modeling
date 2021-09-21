@@ -40,8 +40,9 @@ struct HarmonicSignal: Signal {
     }
     
     static func createImpulse(amplitude: Double, startPhase: Double, frequency: Double, duty: Double) -> HarmonicSignal {
-        
         let name = "Impulse (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)), d: \(String(format: "%.2f", duty)))"
+        
+        let duty = 2 * Double.pi * duty
         
         return HarmonicSignal(
             name: name,
