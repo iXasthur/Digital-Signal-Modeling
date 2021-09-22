@@ -21,8 +21,8 @@ struct ModulatedSignal: Signal {
     let carrier: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 10)
     
     func getValues(_ count: Int) -> [Double] {
-        let carrierValues: [Double] = carrier.getValues(count)
         let messageValues: [Double] = message.getValues(count)
+        let carrierValues: [Double] = carrier.getValues(count)
         var values: [Double] = []
         for n in 0..<count {
             let v = (1 + messageValues[n] / 1) * carrierValues[n]
