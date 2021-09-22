@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct ModulatedSignalsView: View {
+    
+    @State private var signal: ModulatedSignal = ModulatedSignal()
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            SignalChart(signal: signal)
+                .padding(.top, 10)
+            
+            Spacer()
+        }
     }
 }

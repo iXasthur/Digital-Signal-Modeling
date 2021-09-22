@@ -19,7 +19,7 @@ struct CustomTabView: View {
     private let tabIconNames: [String]
     private let tabViews: [AnyView]
     
-    @State private var selection = 1
+    @State private var selection = 2
     
     public init(tabBarPosition: TabBarPosition, content: [(tabText: String, tabIconName: String, view: AnyView)]) {
         self.tabBarPosition = tabBarPosition
