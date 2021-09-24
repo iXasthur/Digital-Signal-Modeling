@@ -13,6 +13,9 @@ struct ModulatedSignalsView: View {
     
     var body: some View {
         VStack {
+            SignalChart(signal: signal.message)
+                .padding(.top, 10)
+            
             SignalChart(signal: signal)
                 .padding(.top, 10)
             
