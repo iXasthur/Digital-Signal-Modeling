@@ -13,10 +13,10 @@ struct HarmonicSignalsView: View {
     
     var body: some View {
         VStack {
-            HarmonicSignalCreator(signal: $signal)
+            SignalChart(signal: signal, title: "Harmonic")
                 .padding(.top, 10)
             
-            SignalChart(signal: signal)
+            HarmonicSignalCreator(signal: $signal)
                 .padding(.top, 10)
             
             Spacer()

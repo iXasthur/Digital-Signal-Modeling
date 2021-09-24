@@ -12,8 +12,9 @@ struct SignalChart: View {
     private let count = 512
     
     let signal: Signal
+    let title: String?
     
     var body: some View {
-        ChartLineView(data: signal.getValues(count), title: nil, height: 200)
+        ChartLineView(data: signal.getValues(count), title: title, height: 200)
     }
 }

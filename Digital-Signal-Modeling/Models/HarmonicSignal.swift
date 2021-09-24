@@ -10,6 +10,8 @@ import Foundation
 struct HarmonicSignal: Signal {
     var name: String = "Harmonic signal"
     
+    var type: SignalType
+    
     var amplitude: Double?
     var startPhase: Double?
     var frequency: Double?
@@ -34,6 +36,7 @@ struct HarmonicSignal: Signal {
     
     static func createDefault() -> HarmonicSignal {
         return HarmonicSignal(
+            type: .def,
             formula: { (_: HarmonicSignal, t: Double) -> Double in
                 return t
             }
@@ -45,6 +48,7 @@ struct HarmonicSignal: Signal {
         
         return HarmonicSignal(
             name: name,
+            type: .sine,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
@@ -64,6 +68,7 @@ struct HarmonicSignal: Signal {
         
         return HarmonicSignal(
             name: name,
+            type: .impulse,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
@@ -84,6 +89,7 @@ struct HarmonicSignal: Signal {
         
         return HarmonicSignal(
             name: name,
+            type: .triangle,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
@@ -103,6 +109,7 @@ struct HarmonicSignal: Signal {
         
         return HarmonicSignal(
             name: name,
+            type: .saw,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
@@ -122,6 +129,7 @@ struct HarmonicSignal: Signal {
         
         return HarmonicSignal(
             name: name,
+            type: .noise,
             amplitude: amplitude,
             formula: { (signal: HarmonicSignal, t: Double) -> Double in
                 let amplitude: Double = signal.amplitude!

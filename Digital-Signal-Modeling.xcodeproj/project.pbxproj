@@ -15,6 +15,7 @@
 		D00A417E26FA7E3900ACE6E2 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417D26FA7E3900ACE6E2 /* Signal.swift */; };
 		D00A418026FA96D700ACE6E2 /* ModulatedSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417F26FA96D700ACE6E2 /* ModulatedSignalsView.swift */; };
 		D00A418226FA98AF00ACE6E2 /* ModulatedSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */; };
+		D02810BC26FE96EF001086AA /* SignalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02810BB26FE96EF001086AA /* SignalType.swift */; };
 		D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086969D26F8D8FC00A15DD8 /* SignalChart.swift */; };
 		D08696A226F8D99800A15DD8 /* HarmonicSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */; };
 		D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A426F9330700A15DD8 /* ChartLineView.swift */; };
@@ -35,6 +36,7 @@
 		D00A417D26FA7E3900ACE6E2 /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		D00A417F26FA96D700ACE6E2 /* ModulatedSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulatedSignalsView.swift; sourceTree = "<group>"; };
 		D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulatedSignal.swift; sourceTree = "<group>"; };
+		D02810BB26FE96EF001086AA /* SignalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalType.swift; sourceTree = "<group>"; };
 		D086969D26F8D8FC00A15DD8 /* SignalChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChart.swift; sourceTree = "<group>"; };
 		D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicSignal.swift; sourceTree = "<group>"; };
 		D08696A426F9330700A15DD8 /* ChartLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		D08696A026F8D99000A15DD8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D02810BB26FE96EF001086AA /* SignalType.swift */,
 				D00A417D26FA7E3900ACE6E2 /* Signal.swift */,
 				D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */,
 				D00A417B26FA7DD800ACE6E2 /* PolyharmonicSignal.swift */,
@@ -242,6 +245,7 @@
 				D00A417A26FA7D9000ACE6E2 /* PolyharmonicSignalCreator.swift in Sources */,
 				D00A417C26FA7DD800ACE6E2 /* PolyharmonicSignal.swift in Sources */,
 				D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */,
+				D02810BC26FE96EF001086AA /* SignalType.swift in Sources */,
 				D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */,
 				D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */,
 				D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */,

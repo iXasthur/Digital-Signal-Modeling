@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-fileprivate enum SignalType: String, CaseIterable, Identifiable {
-    case sine
-    case impulse
-    case triangle
-    case saw
-    case noise
-
-    var id: String { self.rawValue }
-}
-
 struct HarmonicSignalCreator: View {
     
     static let minParamLabelWidth: CGFloat = 72
@@ -62,13 +52,18 @@ struct HarmonicSignalCreator: View {
             signal = HarmonicSignal.createSaw(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
         case .noise:
             signal = HarmonicSignal.createNoise(amplitude: amplitude)
+        case .def:
+            fatalError()
+            break
         }
     }
     
     var body: some View {
         VStack {
-            Picker("Signal Type", selection: $selectedSignalType) {
-                ForEach(SignalType.allCases) { type in
+            Picker("Signal type", selection: $selectedSignalType) {
+                ForEach(SignalType.allCases.filter({ t in
+                    t != .def
+                })) { type in
                     Text(type.rawValue.capitalized).tag(type)
                 }
             }
@@ -96,7 +91,7 @@ struct HarmonicSignalCreator: View {
                 HStack {
                     Text("Frequency")
                         .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
-                    Slider(value: $frequency, in: 0...10)
+                    Slider(value: $frequency, in: 0...32)
                         .onChange(of: frequency) { _ in
                             updateSignal()
                         }
@@ -111,7 +106,7 @@ struct HarmonicSignalCreator: View {
                 HStack {
                     Text("Phase")
                         .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
-                    Slider(value: $startPhase, in: 0...Double.pi*2)
+                    Slider(value: $startPhase, in: 0...2*Double.pi*2)
                         .onChange(of: startPhase) { _ in
                             updateSignal()
                         }
@@ -140,6 +135,19 @@ struct HarmonicSignalCreator: View {
             }
         }
         .onAppear {
+            if signal.type != .def {
+                selectedSignalType = signal.type
+                amplitude = signal.amplitude ?? HarmonicSignalCreator.defaultAmplitude
+                startPhase = signal.startPhase ?? HarmonicSignalCreator.defaultStartPhase
+                frequency = signal.frequency ?? HarmonicSignalCreator.defaultFrequency
+                
+                if signal.duty != nil {
+                    dutyPercentage = signal.duty! / 2 * Double.pi
+                } else {
+                    dutyPercentage = HarmonicSignalCreator.defaultDutyPercentage
+                }
+            }
+            
             updateSignal()
         }
     }

@@ -54,7 +54,7 @@ fileprivate struct SheetView: View {
             HarmonicSignalCreator(signal: $harmonicSignal)
                 .padding(.top, 10)
             
-            SignalChart(signal: harmonicSignal)
+            SignalChart(signal: harmonicSignal, title: nil)
                 .padding(.top, 10)
             
         }

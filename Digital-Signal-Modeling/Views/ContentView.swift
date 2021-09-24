@@ -33,7 +33,6 @@ struct ContentView: View {
                     "dot.radiowaves.left.and.right",
                     AnyView(
                         ModulatedSignalsView()
-                            .padding()
                     )
                 )
             ]

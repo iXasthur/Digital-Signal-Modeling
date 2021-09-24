@@ -8,17 +8,19 @@
 import Foundation
 
 struct ModulatedSignal: Signal {
-    enum ModulationType {
+    enum ModulationType: String, CaseIterable, Identifiable {
         case amplitude
         case frequency
+        
+        var id: String { self.rawValue }
     }
     
     let name: String = "Modulated signal"
     
-    let type: ModulationType = .frequency
+    var type: ModulationType = .frequency
     
-    let message: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 3)
-    let carrier: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 18)
+    var message: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 3)
+    var carrier: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 18)
     
     private func getValuesFM(_ count: Int) -> [Double] {
         let messageValues: [Double] = message.getValues(count)
@@ -31,7 +33,7 @@ struct ModulatedSignal: Signal {
             s.frequency = s.frequency! + (s.frequency! / 8.0 * messageValues[n] / message.amplitude!)
             let phase = 2.0 * Double.pi * s.frequency! * t
             let y = s.getValue(phase: phase)
-            print("\(n): msg:\(messageValues[n]) frequency:\(s.frequency!) phase:\(phase) y:\(y)")
+//            print("\(n): msg:\(messageValues[n]) frequency:\(s.frequency!) phase:\(phase) y:\(y)")
             
             values.append(y)
         }
