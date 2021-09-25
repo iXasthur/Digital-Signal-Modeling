@@ -13,8 +13,9 @@ struct SignalChart: View {
     
     let signal: Signal
     let title: String?
+    var compact: Bool = false
     
     var body: some View {
-        ChartLineView(data: signal.getValues(count), title: title, height: 200)
+        ChartLineView(data: signal.getValues(count), title: title, height: compact ? 140 : 200)
     }
 }

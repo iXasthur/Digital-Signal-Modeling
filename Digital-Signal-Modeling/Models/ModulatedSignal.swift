@@ -17,7 +17,7 @@ struct ModulatedSignal: Signal {
     
     let name: String = "Modulated signal"
     
-    var type: ModulationType = .frequency
+    var type: ModulationType = .amplitude
     
     var message: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 4)
     var carrier: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 15)
