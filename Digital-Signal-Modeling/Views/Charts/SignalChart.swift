@@ -13,9 +13,35 @@ struct SignalChart: View {
     
     let signal: Signal
     let title: String?
-    var compact: Bool = false
+    let compact: Bool
+    
+    private let player: SignalPlayer
+    private let buttons: [HoldableButton]
+    
+    init(signal: Signal, title: String?, compact: Bool = false) {
+        self.signal = signal
+        self.title = title
+        self.compact = compact
+        
+        let player = SignalPlayer(signal: signal)
+        
+        self.player = player
+        
+        self.buttons = [
+            HoldableButton(onTap: {
+                player.play()
+            }, onRelease: {
+                player.stop()
+            })
+        ]
+    }
     
     var body: some View {
-        ChartLineView(data: signal.getValues(count), title: title, height: compact ? 140 : 200)
+        ChartLineView(
+            data: signal.getValues(count),
+            title: title,
+            height: compact ? 140 : 200,
+            actions: buttons
+        )
     }
 }

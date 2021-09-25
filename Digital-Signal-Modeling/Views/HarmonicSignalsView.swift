@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HarmonicSignalsView: View {
     
-    @State private var signal: HarmonicSignal = HarmonicSignal.createDefault()
+    @State private var signal: HarmonicSignal = HarmonicSignal.createSine(amplitude: 1, startPhase: 0, frequency: 1)
     
     var body: some View {
         ScrollView {

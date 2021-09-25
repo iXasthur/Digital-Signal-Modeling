@@ -89,13 +89,22 @@ struct ChartLineView: View {
     var data: [Double]
     var title: String?
     var height: CGFloat? = 200
+    var actions: [HoldableButton] = []
     
     public var body: some View {
         GeometryReader{ geometry in
             VStack(alignment: .leading, spacing: 8) {
-                if (self.title != nil){
-                    Text(self.title!)
-                        .font(.title)
+                HStack {
+                    if (self.title != nil){
+                        Text(self.title!)
+                            .font(.title)
+                    }
+                    Spacer()
+                    HStack {
+                        ForEach((0..<actions.count), id: \.self) {
+                            actions[$0]
+                        }
+                    }
                 }
                 HStack {
                     VStack(alignment: .trailing) {

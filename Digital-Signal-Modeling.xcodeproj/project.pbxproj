@@ -16,6 +16,8 @@
 		D00A418026FA96D700ACE6E2 /* ModulatedSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417F26FA96D700ACE6E2 /* ModulatedSignalsView.swift */; };
 		D00A418226FA98AF00ACE6E2 /* ModulatedSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */; };
 		D02810BC26FE96EF001086AA /* SignalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02810BB26FE96EF001086AA /* SignalType.swift */; };
+		D02946A926FF52BE002EB5E8 /* HoldableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02946A826FF52BE002EB5E8 /* HoldableButton.swift */; };
+		D02946AC26FF5703002EB5E8 /* SignalPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */; };
 		D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086969D26F8D8FC00A15DD8 /* SignalChart.swift */; };
 		D08696A226F8D99800A15DD8 /* HarmonicSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */; };
 		D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A426F9330700A15DD8 /* ChartLineView.swift */; };
@@ -37,6 +39,8 @@
 		D00A417F26FA96D700ACE6E2 /* ModulatedSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulatedSignalsView.swift; sourceTree = "<group>"; };
 		D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulatedSignal.swift; sourceTree = "<group>"; };
 		D02810BB26FE96EF001086AA /* SignalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalType.swift; sourceTree = "<group>"; };
+		D02946A826FF52BE002EB5E8 /* HoldableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldableButton.swift; sourceTree = "<group>"; };
+		D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalPlayer.swift; sourceTree = "<group>"; };
 		D086969D26F8D8FC00A15DD8 /* SignalChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChart.swift; sourceTree = "<group>"; };
 		D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicSignal.swift; sourceTree = "<group>"; };
 		D08696A426F9330700A15DD8 /* ChartLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineView.swift; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		D00A417226FA709B00ACE6E2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */,
 				D00A417326FA70AC00ACE6E2 /* ColorExtensions.swift */,
 			);
 			path = Utils;
@@ -87,9 +92,18 @@
 			path = SignalCreators;
 			sourceTree = "<group>";
 		};
+		D02946AA26FF52D6002EB5E8 /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				D02946A826FF52BE002EB5E8 /* HoldableButton.swift */,
+			);
+			path = Universal;
+			sourceTree = "<group>";
+		};
 		D086969F26F8D97B00A15DD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D02946AA26FF52D6002EB5E8 /* Universal */,
 				D00A417826FA735C00ACE6E2 /* SignalCreators */,
 				D00A417726FA72E000ACE6E2 /* TabViews */,
 				D08696AA26F93FE500A15DD8 /* Charts */,
@@ -236,6 +250,7 @@
 			files = (
 				D0A1703826F8A190001608B9 /* ContentView.swift in Sources */,
 				D00A417E26FA7E3900ACE6E2 /* Signal.swift in Sources */,
+				D02946A926FF52BE002EB5E8 /* HoldableButton.swift in Sources */,
 				D00A418026FA96D700ACE6E2 /* ModulatedSignalsView.swift in Sources */,
 				D00A417426FA70AC00ACE6E2 /* ColorExtensions.swift in Sources */,
 				D00A418226FA98AF00ACE6E2 /* ModulatedSignal.swift in Sources */,
@@ -249,6 +264,7 @@
 				D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */,
 				D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */,
 				D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */,
+				D02946AC26FF5703002EB5E8 /* SignalPlayer.swift in Sources */,
 				D08696A726F93F1600A15DD8 /* HarmonicSignalsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
