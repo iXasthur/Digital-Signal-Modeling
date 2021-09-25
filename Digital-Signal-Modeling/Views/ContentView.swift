@@ -17,7 +17,6 @@ struct ContentView: View {
                     "bolt.horizontal",
                     AnyView(
                         HarmonicSignalsView()
-                            .padding()
                     )
                 ),
                 (
@@ -25,7 +24,6 @@ struct ContentView: View {
                     "network",
                     AnyView(
                         PolyharmonicSignalsView()
-                            .padding()
                     )
                 ),
                 (

@@ -12,14 +12,17 @@ struct PolyharmonicSignalsView: View {
     @State private var signal: PolyharmonicSignal = PolyharmonicSignal()
     
     var body: some View {
-        VStack {
-            SignalChart(signal: signal, title: "Polyharmonic")
-                .padding(.top, 10)
-            
-            PolyharmonicSignalCreator(signal: $signal)
-                .padding(.top, 10)
-            
-            Spacer()
+        ScrollView {
+            VStack {
+                SignalChart(signal: signal, title: "Polyharmonic")
+                    .padding(.top, 10)
+                
+                PolyharmonicSignalCreator(signal: $signal)
+                    .padding(.top, 10)
+                
+                Spacer()
+            }
+            .padding()
         }
     }
 }
