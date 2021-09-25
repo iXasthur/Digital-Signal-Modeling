@@ -13,16 +13,21 @@ class SignalPlayer {
     let sampleRate = 44100
     
     let signal: Signal
-    let values: [Double]
     
-    let audioEngine: AVAudioEngine
+    let audioEngine = AVAudioEngine()
     let playerNode = AVAudioPlayerNode()
+    
+    var prepared = false
     
     init(signal: Signal) {
         self.signal = signal
-        self.values = signal.getValues(sampleRate)
-        
-        audioEngine = AVAudioEngine()
+    }
+    
+    func prepare() {
+        var fvalues: [Float] = []
+        signal.getValues(sampleRate).forEach { v in
+            fvalues.append(Float(v))
+        }
         
         let mainMixer = audioEngine.mainMixerNode
         let output = audioEngine.outputNode
@@ -39,13 +44,8 @@ class SignalPlayer {
         audioEngine.connect(playerNode, to: mainMixer, format: inputFormat)
         audioEngine.connect(mainMixer, to: output, format: outputFormat)
         
-        let buffer: AVAudioPCMBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: AVAudioFrameCount(self.values.count))!
+        let buffer: AVAudioPCMBuffer = AVAudioPCMBuffer(pcmFormat: outputFormat, frameCapacity: AVAudioFrameCount(fvalues.count))!
         buffer.frameLength = buffer.frameCapacity
-        
-        var fvalues: [Float] = []
-        self.values.forEach { v in
-            fvalues.append(Float(v))
-        }
         
         fvalues.withUnsafeBufferPointer { p in
             buffer.floatChannelData!.pointee.assign(from: p.baseAddress!, count: fvalues.count)
@@ -60,15 +60,20 @@ class SignalPlayer {
         } catch {
             print("Could not start engine: \(error)")
         }
+        
+        prepared = true
     }
     
-    
     func play() {
+        if !prepared {
+            prepare()
+        }
+        
         playerNode.play()
     }
     
     func stop() {
-        playerNode.stop()
+        playerNode.pause()
     }
     
 }
