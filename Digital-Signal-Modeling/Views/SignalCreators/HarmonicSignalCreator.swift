@@ -15,14 +15,38 @@ struct HarmonicSignalCreator: View {
     static let defaultFrequency: Double = 1
     static let defaultDutyPercentage: Double = 0.5
     
-    @State private var amplitude: Double = defaultAmplitude
-    @State private var startPhase: Double = defaultStartPhase
-    @State private var frequency: Double = defaultFrequency
-    @State private var dutyPercentage: Double = defaultDutyPercentage
+    @State private var amplitude: Double
+    @State private var startPhase: Double
+    @State private var frequency: Double
+    @State private var dutyPercentage: Double
     
-    @State private var selectedSignalType = SignalType.sine
+    @State private var selectedSignalType: SignalType
     
     @Binding var signal: HarmonicSignal
+    
+    init(signal: Binding<HarmonicSignal>) {
+        self._signal = signal
+        
+        if _signal.wrappedValue.type != .def {
+            selectedSignalType = _signal.wrappedValue.type
+            amplitude = _signal.wrappedValue.amplitude ?? HarmonicSignalCreator.defaultAmplitude
+            startPhase = _signal.wrappedValue.startPhase ?? HarmonicSignalCreator.defaultStartPhase
+            frequency = _signal.wrappedValue.frequency ?? HarmonicSignalCreator.defaultFrequency
+            
+            if _signal.wrappedValue.duty != nil {
+                dutyPercentage = _signal.wrappedValue.duty! / (2 * Double.pi)
+            } else {
+                dutyPercentage = HarmonicSignalCreator.defaultDutyPercentage
+            }
+        } else {
+            amplitude = HarmonicSignalCreator.defaultAmplitude
+            startPhase = HarmonicSignalCreator.defaultStartPhase
+            frequency = HarmonicSignalCreator.defaultFrequency
+            dutyPercentage = HarmonicSignalCreator.defaultDutyPercentage
+            
+            selectedSignalType = SignalType.sine
+        }
+    }
     
     func shouldDisableAmplitude() -> Bool {
         return false
@@ -135,19 +159,6 @@ struct HarmonicSignalCreator: View {
             }
         }
         .onAppear {
-            if signal.type != .def {
-                selectedSignalType = signal.type
-                amplitude = signal.amplitude ?? HarmonicSignalCreator.defaultAmplitude
-                startPhase = signal.startPhase ?? HarmonicSignalCreator.defaultStartPhase
-                frequency = signal.frequency ?? HarmonicSignalCreator.defaultFrequency
-                
-                if signal.duty != nil {
-                    dutyPercentage = signal.duty! / 2 * Double.pi
-                } else {
-                    dutyPercentage = HarmonicSignalCreator.defaultDutyPercentage
-                }
-            }
-            
             updateSignal()
         }
     }

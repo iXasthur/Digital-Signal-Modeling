@@ -8,10 +8,25 @@
 import SwiftUI
 
 fileprivate struct SheetView: View {
+    
     @Binding var isPresented: Bool
     @Binding var signal: PolyharmonicSignal
     
-    @State private var harmonicSignal: HarmonicSignal = HarmonicSignal.createDefault()
+    let indexToEdit: Int?
+    
+    @State private var harmonicSignal: HarmonicSignal
+    
+    init(isPresented: Binding<Bool>, signal: Binding<PolyharmonicSignal>, indexToEdit: Int?) {
+        self._isPresented = isPresented
+        self._signal = signal
+        self.indexToEdit = indexToEdit
+        
+        if indexToEdit != nil {
+            harmonicSignal = _signal.wrappedValue.signals[indexToEdit!]
+        } else {
+            harmonicSignal = .createDefault()
+        }
+    }
 
     var body: some View {
         VStack {
@@ -36,7 +51,12 @@ fileprivate struct SheetView: View {
                 Spacer()
                
                 Button {
-                    signal.signals.append(harmonicSignal)
+                    if indexToEdit != nil {
+                        signal.signals[indexToEdit!] = harmonicSignal
+                    } else {
+                        signal.signals.append(harmonicSignal)
+                    }
+                    
                     isPresented.toggle()
                     NSApp.mainWindow?.endSheet(NSApp.keyWindow!)
                 } label: {
@@ -67,6 +87,8 @@ struct PolyharmonicSignalCreator: View {
     
     @State private var showingSheet = false
     
+    @State private var indexToEdit: Int? = nil
+    
     @Binding var signal: PolyharmonicSignal
     
     var body: some View {
@@ -80,16 +102,17 @@ struct PolyharmonicSignalCreator: View {
                     
                     Spacer()
                     
-//                    Button {
-//
-//                    } label: {
-//                        Image(systemName: "pencil")
-//                            .font(.headline)
-//                            .foregroundColor(.accentColor)
-//                            .frame(width: 20, height: 20, alignment: .trailing)
-//                            .contentShape(Rectangle())
-//                    }
-//                    .buttonStyle(PlainButtonStyle())
+                    Button {
+                        indexToEdit = i
+                        showingSheet.toggle()
+                    } label: {
+                        Image(systemName: "pencil")
+                            .font(.headline)
+                            .foregroundColor(.accentColor)
+                            .frame(width: 20, height: 20, alignment: .trailing)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(PlainButtonStyle())
                     
                     Button {
                         signal.signals.remove(at: i)
@@ -105,6 +128,7 @@ struct PolyharmonicSignalCreator: View {
             }
             
             Button {
+                indexToEdit = nil
                 showingSheet.toggle()
             } label: {
                 Text("Add signal")
@@ -112,7 +136,7 @@ struct PolyharmonicSignalCreator: View {
             .padding(.top, 10)
         }
         .sheet(isPresented: $showingSheet) {
-            SheetView(isPresented: $showingSheet, signal: $signal)
+            SheetView(isPresented: $showingSheet, signal: $signal, indexToEdit: indexToEdit)
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 struct PolyharmonicSignal: Signal {
     var name: String = "Polyharmonic signal"
     
-    var signals: [Signal] = []
+    var signals: [HarmonicSignal] = []
     
     func getValues(_ count: Int) -> [Double] {
         if signals.isEmpty {
