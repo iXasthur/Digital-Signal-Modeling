@@ -45,7 +45,7 @@ fileprivate struct SheetView: View {
 
                 Spacer()
                 
-                Text("Add signal")
+                Text(indexToEdit == nil ? "Add signal" : "Edit signal")
                     .font(.headline)
                 
                 Spacer()
