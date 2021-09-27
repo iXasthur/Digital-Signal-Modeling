@@ -112,11 +112,7 @@ struct HarmonicSignalCreator: View {
                 }
             Text("\(frequency, specifier: "%.1f")")
                 .onTapGesture {
-                    if frequency == HarmonicSignalCreator.defaultFrequency {
-                        frequency = compact ? 220 : 440
-                    } else {
-                        frequency = HarmonicSignalCreator.defaultFrequency
-                    }
+                    frequency = HarmonicSignalCreator.defaultFrequency
                 }
         }
         .disabled(shouldDisableFrequency())
