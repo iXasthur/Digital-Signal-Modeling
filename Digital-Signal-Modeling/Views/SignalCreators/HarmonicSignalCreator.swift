@@ -106,7 +106,7 @@ struct HarmonicSignalCreator: View {
         HStack {
             Text("Frequency")
                 .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
-            Slider(value: $frequency, in: 0...(compact ? 220 : 440))
+            Slider(value: $frequency, in: 0...440)
                 .onChange(of: frequency) { _ in
                     self.frequency.round()
                     updateSignal()
