@@ -106,14 +106,14 @@ struct HarmonicSignalCreator: View {
         HStack {
             Text("Frequency")
                 .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
-            Slider(value: $frequency, in: 0...32)
+            Slider(value: $frequency, in: 0...(compact ? 220 : 440))
                 .onChange(of: frequency) { _ in
                     updateSignal()
                 }
             Text("\(frequency, specifier: "%.1f")")
                 .onTapGesture {
                     if frequency == HarmonicSignalCreator.defaultFrequency {
-                        frequency = 440
+                        frequency = compact ? 220 : 440
                     } else {
                         frequency = HarmonicSignalCreator.defaultFrequency
                     }

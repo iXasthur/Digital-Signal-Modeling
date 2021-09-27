@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignalChart: View {
     
-    private let count = 512
+    private let count = 4096
     
     let signal: Signal
     let title: String?
