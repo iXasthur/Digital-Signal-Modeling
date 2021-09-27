@@ -108,6 +108,7 @@ struct HarmonicSignalCreator: View {
                 .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
             Slider(value: $frequency, in: 0...(compact ? 220 : 440))
                 .onChange(of: frequency) { _ in
+                    self.frequency.round()
                     updateSignal()
                 }
             Text("\(frequency, specifier: "%.1f")")
