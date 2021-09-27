@@ -5,7 +5,7 @@
 //  Created by Михаил Ковалевский on 25.09.2021.
 //
 
-import Foundation
+import AppKit
 import AVFoundation
 
 class SignalPlayer {
@@ -24,10 +24,7 @@ class SignalPlayer {
     }
     
     func prepare() {
-        var fvalues: [Float] = []
-        signal.getValues(sampleRate).forEach { v in
-            fvalues.append(Float(v))
-        }
+        let fvalues: [Float] = signal.getValuesF(sampleRate)
         
         let mainMixer = audioEngine.mainMixerNode
         let output = audioEngine.outputNode
@@ -52,8 +49,6 @@ class SignalPlayer {
         }
         
         playerNode.scheduleBuffer(buffer, at: nil, options: .loops, completionHandler: nil)
-
-        mainMixer.outputVolume = 0.5
         
         do {
             try audioEngine.start()
@@ -76,4 +71,38 @@ class SignalPlayer {
         playerNode.pause()
     }
     
+    func save() {
+        let savePanel = NSSavePanel()
+        savePanel.nameFieldStringValue = "signal.wav"
+        savePanel.directoryURL = URL(string: (NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true) as [String]).first!)
+        savePanel.showsTagField = false
+        savePanel.begin { (result) in
+            if result == .OK {
+                let file = savePanel.url!
+                
+                if let format = AVAudioFormat(
+                    commonFormat: .pcmFormatFloat32,
+                    sampleRate: Double(self.sampleRate),
+                    channels: 1,
+                    interleaved: false
+                ) {
+                    let fvalues: [Float] = self.signal.getValuesF(self.sampleRate)
+                    
+                    let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(fvalues.count))!
+                    buffer.frameLength = buffer.frameCapacity
+                    
+                    fvalues.withUnsafeBufferPointer { p in
+                        buffer.floatChannelData!.pointee.assign(from: p.baseAddress!, count: fvalues.count)
+                    }
+                    
+                    do {
+                        let audioFile = try AVAudioFile(forWriting: file, settings: format.settings)
+                        try audioFile.write(from: buffer)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+        }
+    }
 }

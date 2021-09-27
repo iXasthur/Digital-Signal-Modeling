@@ -28,11 +28,22 @@ struct SignalChart: View {
         self.player = player
         
         self.buttons = [
-            HoldableButton(onTap: {
-                player.play()
-            }, onRelease: {
-                player.stop()
-            })
+            HoldableButton(
+                icon0: "play",
+                icon1: "play.fill",
+                onTap: {
+                    player.play()
+                }, onRelease: {
+                    player.stop()
+                }),
+            HoldableButton(
+                icon0: "square.and.arrow.up",
+                icon1: "square.and.arrow.up.fill",
+                onTap: {
+                    
+                }, onRelease: {
+                    player.save()
+                })
         ]
     }
     

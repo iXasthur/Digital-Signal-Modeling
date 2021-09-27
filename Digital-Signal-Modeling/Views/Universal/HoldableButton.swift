@@ -11,8 +11,8 @@ struct HoldableButton: View {
     
     @State private var holding = false
     
-    var icon0 = "play"
-    var icon1 = "play.fill"
+    var icon0: String
+    var icon1: String
     
     var onTap: () -> Void
     var onRelease: () -> Void
