@@ -34,9 +34,11 @@ struct ModulatedSignal: Signal {
         for _ in 0..<count {
             values.append(carrier.getValue(phase: carrierPhase))
 
+            let messageValue = self.message.getValue(phase: messagePhase)
+            
             messagePhase += 2 * Double.pi * mf / Double(count)
 
-            carrierPhase += 2 * Double.pi * cf / Double(count) * (2 + self.message.getValue(phase: messagePhase) / message.amplitude!)
+            carrierPhase += 2 * Double.pi * cf * (1 + messageValue) / Double(count)
 
 
             if carrierPhase >= 2 * Double.pi {
