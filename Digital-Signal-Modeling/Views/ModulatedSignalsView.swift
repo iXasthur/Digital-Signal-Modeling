@@ -17,13 +17,13 @@ struct ModulatedSignalsView: View {
                 SignalChart(signal: signal.message, title: "Message", compact: true)
                     .padding(.top, 10)
                 
-                HarmonicSignalCreator(signal: $signal.message, compact: true)
+                SingleVoiceSignalCreator(signal: $signal.message, compact: true)
                     .padding(.top, 10)
                 
                 SignalChart(signal: signal.carrier, title: "Carrier", compact: true)
                     .padding(.top, 20)
                 
-                HarmonicSignalCreator(signal: $signal.carrier, compact: true)
+                SingleVoiceSignalCreator(signal: $signal.carrier, compact: true)
                     .padding(.top, 10)
                 
                 Picker("Modulation type", selection: $signal.type) {

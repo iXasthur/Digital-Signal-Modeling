@@ -1,5 +1,5 @@
 //
-//  PolyharmonicSignalCreator.swift
+//  MultipleVoicesSignalCreator.swift
 //  Digital-Signal-Modeling
 //
 //  Created by Михаил Ковалевский on 21.09.2021.
@@ -10,13 +10,13 @@ import SwiftUI
 fileprivate struct SheetView: View {
     
     @Binding var isPresented: Bool
-    @Binding var signal: PolyharmonicSignal
+    @Binding var signal: MultipleVoicesSignal
     
     let indexToEdit: Int?
     
-    @State private var harmonicSignal: HarmonicSignal
+    @State private var harmonicSignal: SingleVoiceSignal
     
-    init(isPresented: Binding<Bool>, signal: Binding<PolyharmonicSignal>, indexToEdit: Int?) {
+    init(isPresented: Binding<Bool>, signal: Binding<MultipleVoicesSignal>, indexToEdit: Int?) {
         self._isPresented = isPresented
         self._signal = signal
         self.indexToEdit = indexToEdit
@@ -71,7 +71,7 @@ fileprivate struct SheetView: View {
             
             Divider()
             
-            HarmonicSignalCreator(signal: $harmonicSignal)
+            SingleVoiceSignalCreator(signal: $harmonicSignal)
                 .padding(.top, 10)
             
             SignalChart(signal: harmonicSignal, title: nil)
@@ -83,13 +83,13 @@ fileprivate struct SheetView: View {
     }
 }
 
-struct PolyharmonicSignalCreator: View {
+struct MultipleVoicesSignalCreator: View {
     
     @State private var showingSheet = false
     
     @State private var indexToEdit: Int? = nil
     
-    @Binding var signal: PolyharmonicSignal
+    @Binding var signal: MultipleVoicesSignal
     
     var body: some View {
         VStack {

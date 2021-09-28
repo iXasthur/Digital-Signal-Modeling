@@ -13,17 +13,17 @@ struct ContentView: View {
             tabBarPosition: .bottom,
             content: [
                 (
-                    "Harmonic",
+                    "Single Voice",
                     "bolt.horizontal",
                     AnyView(
-                        HarmonicSignalsView()
+                        SingleVoiceSignalsView()
                     )
                 ),
                 (
-                    "Polyharmonic",
+                    "Multiple Voices",
                     "network",
                     AnyView(
-                        PolyharmonicSignalsView()
+                        MultipleVoicesSignalsView()
                     )
                 ),
                 (

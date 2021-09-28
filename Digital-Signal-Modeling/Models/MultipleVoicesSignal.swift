@@ -1,5 +1,5 @@
 //
-//  PolyharmonicSignal.swift
+//  MultipleVoicesSignal.swift
 //  Digital-Signal-Modeling
 //
 //  Created by Михаил Ковалевский on 21.09.2021.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct PolyharmonicSignal: Signal {
-    var name: String = "Polyharmonic signal"
+struct MultipleVoicesSignal: Signal {
+    var name: String = "Multiple voices signal"
     
-    var signals: [HarmonicSignal] = []
+    var signals: [SingleVoiceSignal] = []
     
     func getValues(_ count: Int) -> [Double] {
         if signals.isEmpty {

@@ -9,7 +9,7 @@ import Foundation
 
 enum SignalType: String, CaseIterable, Identifiable {
     case sine
-    case impulse
+    case pulse
     case triangle
     case saw
     case noise

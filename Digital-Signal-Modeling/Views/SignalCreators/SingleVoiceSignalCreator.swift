@@ -1,5 +1,5 @@
 //
-//  HarmonicSignalCreator.swift
+//  SingleVoiceSignalCreator.swift
 //  Digital-Signal-Modeling
 //
 //  Created by Михаил Ковалевский on 21.09.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HarmonicSignalCreator: View {
+struct SingleVoiceSignalCreator: View {
     
     static let minParamLabelWidth: CGFloat = 72
     static let defaultAmplitude: Double = 1
@@ -22,30 +22,30 @@ struct HarmonicSignalCreator: View {
     
     @State private var selectedSignalType: SignalType
     
-    @Binding var signal: HarmonicSignal
+    @Binding var signal: SingleVoiceSignal
     
     let compact: Bool
     
-    init(signal: Binding<HarmonicSignal>, compact: Bool = false) {
+    init(signal: Binding<SingleVoiceSignal>, compact: Bool = false) {
         self._signal = signal
         self.compact = compact
         
         if _signal.wrappedValue.type != .def {
             selectedSignalType = _signal.wrappedValue.type
-            amplitude = _signal.wrappedValue.amplitude ?? HarmonicSignalCreator.defaultAmplitude
-            startPhase = _signal.wrappedValue.startPhase ?? HarmonicSignalCreator.defaultStartPhase
-            frequency = _signal.wrappedValue.frequency ?? HarmonicSignalCreator.defaultFrequency
+            amplitude = _signal.wrappedValue.amplitude ?? SingleVoiceSignalCreator.defaultAmplitude
+            startPhase = _signal.wrappedValue.startPhase ?? SingleVoiceSignalCreator.defaultStartPhase
+            frequency = _signal.wrappedValue.frequency ?? SingleVoiceSignalCreator.defaultFrequency
             
             if _signal.wrappedValue.duty != nil {
                 dutyPercentage = _signal.wrappedValue.duty! / (2 * Double.pi)
             } else {
-                dutyPercentage = HarmonicSignalCreator.defaultDutyPercentage
+                dutyPercentage = SingleVoiceSignalCreator.defaultDutyPercentage
             }
         } else {
-            amplitude = HarmonicSignalCreator.defaultAmplitude
-            startPhase = HarmonicSignalCreator.defaultStartPhase
-            frequency = HarmonicSignalCreator.defaultFrequency
-            dutyPercentage = HarmonicSignalCreator.defaultDutyPercentage
+            amplitude = SingleVoiceSignalCreator.defaultAmplitude
+            startPhase = SingleVoiceSignalCreator.defaultStartPhase
+            frequency = SingleVoiceSignalCreator.defaultFrequency
+            dutyPercentage = SingleVoiceSignalCreator.defaultDutyPercentage
             
             selectedSignalType = SignalType.sine
         }
@@ -64,21 +64,21 @@ struct HarmonicSignalCreator: View {
     }
     
     func shouldDisableDuty() -> Bool {
-        return selectedSignalType != .impulse
+        return selectedSignalType != .pulse
     }
     
     func updateSignal() {
         switch selectedSignalType {
         case .sine:
-            signal = HarmonicSignal.createSine(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
-        case .impulse:
-            signal = HarmonicSignal.createImpulse(amplitude: amplitude, startPhase: startPhase, frequency: frequency, duty: dutyPercentage)
+            signal = SingleVoiceSignal.createSine(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
+        case .pulse:
+            signal = SingleVoiceSignal.createImpulse(amplitude: amplitude, startPhase: startPhase, frequency: frequency, duty: dutyPercentage)
         case .triangle:
-            signal = HarmonicSignal.createTriangle(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
+            signal = SingleVoiceSignal.createTriangle(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
         case .saw:
-            signal = HarmonicSignal.createSaw(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
+            signal = SingleVoiceSignal.createSaw(amplitude: amplitude, startPhase: startPhase, frequency: frequency)
         case .noise:
-            signal = HarmonicSignal.createNoise(amplitude: amplitude)
+            signal = SingleVoiceSignal.createNoise(amplitude: amplitude)
         case .def:
             fatalError()
             break
@@ -88,14 +88,14 @@ struct HarmonicSignalCreator: View {
     var amplitudeSlider: some View {
         HStack {
             Text("Amplitude")
-                .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
+                .frame(minWidth: SingleVoiceSignalCreator.minParamLabelWidth, alignment: .leading)
             Slider(value: $amplitude, in: 0...10)
                 .onChange(of: amplitude) { _ in
                     updateSignal()
                 }
             Text("\(amplitude, specifier: "%.1f")")
                 .onTapGesture {
-                    amplitude = HarmonicSignalCreator.defaultAmplitude
+                    amplitude = SingleVoiceSignalCreator.defaultAmplitude
                 }
         }
         .disabled(shouldDisableAmplitude())
@@ -105,7 +105,7 @@ struct HarmonicSignalCreator: View {
     var frequencySlider: some View {
         HStack {
             Text("Frequency")
-                .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
+                .frame(minWidth: SingleVoiceSignalCreator.minParamLabelWidth, alignment: .leading)
             Slider(value: $frequency, in: 0...440)
                 .onChange(of: frequency) { _ in
                     self.frequency.round()
@@ -113,7 +113,7 @@ struct HarmonicSignalCreator: View {
                 }
             Text("\(frequency, specifier: "%.1f")")
                 .onTapGesture {
-                    frequency = HarmonicSignalCreator.defaultFrequency
+                    frequency = SingleVoiceSignalCreator.defaultFrequency
                 }
         }
         .disabled(shouldDisableFrequency())
@@ -123,14 +123,14 @@ struct HarmonicSignalCreator: View {
     var startPhaseSlider: some View {
         HStack {
             Text("Phase")
-                .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
+                .frame(minWidth: SingleVoiceSignalCreator.minParamLabelWidth, alignment: .leading)
             Slider(value: $startPhase, in: 0...2*Double.pi*2)
                 .onChange(of: startPhase) { _ in
                     updateSignal()
                 }
             Text("\(startPhase, specifier: "%.1f")")
                 .onTapGesture {
-                    startPhase = HarmonicSignalCreator.defaultStartPhase
+                    startPhase = SingleVoiceSignalCreator.defaultStartPhase
                 }
         }
         .disabled(shouldDisablePhase())
@@ -140,14 +140,14 @@ struct HarmonicSignalCreator: View {
     var dutySlider: some View {
         HStack {
             Text("Duty")
-                .frame(minWidth: HarmonicSignalCreator.minParamLabelWidth, alignment: .leading)
+                .frame(minWidth: SingleVoiceSignalCreator.minParamLabelWidth, alignment: .leading)
             Slider(value: $dutyPercentage, in: 0...1)
                 .onChange(of: dutyPercentage) { _ in
                     updateSignal()
                 }
             Text("\(dutyPercentage, specifier: "%.1f")")
                 .onTapGesture {
-                    dutyPercentage = HarmonicSignalCreator.defaultDutyPercentage
+                    dutyPercentage = SingleVoiceSignalCreator.defaultDutyPercentage
                 }
         }
         .disabled(shouldDisableDuty())

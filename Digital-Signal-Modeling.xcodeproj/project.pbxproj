@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D00A417126FA6B1000ACE6E2 /* HarmonicSignalCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417026FA6B1000ACE6E2 /* HarmonicSignalCreator.swift */; };
+		D00A417126FA6B1000ACE6E2 /* SingleVoiceSignalCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417026FA6B1000ACE6E2 /* SingleVoiceSignalCreator.swift */; };
 		D00A417426FA70AC00ACE6E2 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417326FA70AC00ACE6E2 /* ColorExtensions.swift */; };
 		D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417526FA70F400ACE6E2 /* CustomTabView.swift */; };
-		D00A417A26FA7D9000ACE6E2 /* PolyharmonicSignalCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417926FA7D9000ACE6E2 /* PolyharmonicSignalCreator.swift */; };
-		D00A417C26FA7DD800ACE6E2 /* PolyharmonicSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417B26FA7DD800ACE6E2 /* PolyharmonicSignal.swift */; };
+		D00A417A26FA7D9000ACE6E2 /* MultipleVoicesSignalCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417926FA7D9000ACE6E2 /* MultipleVoicesSignalCreator.swift */; };
+		D00A417C26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417B26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift */; };
 		D00A417E26FA7E3900ACE6E2 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417D26FA7E3900ACE6E2 /* Signal.swift */; };
 		D00A418026FA96D700ACE6E2 /* ModulatedSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A417F26FA96D700ACE6E2 /* ModulatedSignalsView.swift */; };
 		D00A418226FA98AF00ACE6E2 /* ModulatedSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */; };
@@ -19,10 +19,10 @@
 		D02946A926FF52BE002EB5E8 /* HoldableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02946A826FF52BE002EB5E8 /* HoldableButton.swift */; };
 		D02946AC26FF5703002EB5E8 /* SignalPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */; };
 		D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086969D26F8D8FC00A15DD8 /* SignalChart.swift */; };
-		D08696A226F8D99800A15DD8 /* HarmonicSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */; };
+		D08696A226F8D99800A15DD8 /* SingleVoiceSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A126F8D99800A15DD8 /* SingleVoiceSignal.swift */; };
 		D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A426F9330700A15DD8 /* ChartLineView.swift */; };
-		D08696A726F93F1600A15DD8 /* HarmonicSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A626F93F1600A15DD8 /* HarmonicSignalsView.swift */; };
-		D08696A926F93F3700A15DD8 /* PolyharmonicSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A826F93F3700A15DD8 /* PolyharmonicSignalsView.swift */; };
+		D08696A726F93F1600A15DD8 /* SingleVoiceSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A626F93F1600A15DD8 /* SingleVoiceSignalsView.swift */; };
+		D08696A926F93F3700A15DD8 /* MultipleVoicesSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08696A826F93F3700A15DD8 /* MultipleVoicesSignalsView.swift */; };
 		D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A1703526F8A190001608B9 /* Digital_Signal_ModelingApp.swift */; };
 		D0A1703826F8A190001608B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A1703726F8A190001608B9 /* ContentView.swift */; };
 		D0A1703A26F8A191001608B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A1703926F8A191001608B9 /* Assets.xcassets */; };
@@ -30,11 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D00A417026FA6B1000ACE6E2 /* HarmonicSignalCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicSignalCreator.swift; sourceTree = "<group>"; };
+		D00A417026FA6B1000ACE6E2 /* SingleVoiceSignalCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoiceSignalCreator.swift; sourceTree = "<group>"; };
 		D00A417326FA70AC00ACE6E2 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		D00A417526FA70F400ACE6E2 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
-		D00A417926FA7D9000ACE6E2 /* PolyharmonicSignalCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyharmonicSignalCreator.swift; sourceTree = "<group>"; };
-		D00A417B26FA7DD800ACE6E2 /* PolyharmonicSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyharmonicSignal.swift; sourceTree = "<group>"; };
+		D00A417926FA7D9000ACE6E2 /* MultipleVoicesSignalCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleVoicesSignalCreator.swift; sourceTree = "<group>"; };
+		D00A417B26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleVoicesSignal.swift; sourceTree = "<group>"; };
 		D00A417D26FA7E3900ACE6E2 /* Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		D00A417F26FA96D700ACE6E2 /* ModulatedSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulatedSignalsView.swift; sourceTree = "<group>"; };
 		D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulatedSignal.swift; sourceTree = "<group>"; };
@@ -42,10 +42,10 @@
 		D02946A826FF52BE002EB5E8 /* HoldableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldableButton.swift; sourceTree = "<group>"; };
 		D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalPlayer.swift; sourceTree = "<group>"; };
 		D086969D26F8D8FC00A15DD8 /* SignalChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChart.swift; sourceTree = "<group>"; };
-		D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicSignal.swift; sourceTree = "<group>"; };
+		D08696A126F8D99800A15DD8 /* SingleVoiceSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoiceSignal.swift; sourceTree = "<group>"; };
 		D08696A426F9330700A15DD8 /* ChartLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineView.swift; sourceTree = "<group>"; };
-		D08696A626F93F1600A15DD8 /* HarmonicSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicSignalsView.swift; sourceTree = "<group>"; };
-		D08696A826F93F3700A15DD8 /* PolyharmonicSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyharmonicSignalsView.swift; sourceTree = "<group>"; };
+		D08696A626F93F1600A15DD8 /* SingleVoiceSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoiceSignalsView.swift; sourceTree = "<group>"; };
+		D08696A826F93F3700A15DD8 /* MultipleVoicesSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleVoicesSignalsView.swift; sourceTree = "<group>"; };
 		D0A1703226F8A190001608B9 /* Digital-Signal-Modeling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital-Signal-Modeling.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A1703526F8A190001608B9 /* Digital_Signal_ModelingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digital_Signal_ModelingApp.swift; sourceTree = "<group>"; };
 		D0A1703726F8A190001608B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 		D00A417826FA735C00ACE6E2 /* SignalCreators */ = {
 			isa = PBXGroup;
 			children = (
-				D00A417026FA6B1000ACE6E2 /* HarmonicSignalCreator.swift */,
-				D00A417926FA7D9000ACE6E2 /* PolyharmonicSignalCreator.swift */,
+				D00A417026FA6B1000ACE6E2 /* SingleVoiceSignalCreator.swift */,
+				D00A417926FA7D9000ACE6E2 /* MultipleVoicesSignalCreator.swift */,
 			);
 			path = SignalCreators;
 			sourceTree = "<group>";
@@ -107,8 +107,8 @@
 				D00A417826FA735C00ACE6E2 /* SignalCreators */,
 				D00A417726FA72E000ACE6E2 /* TabViews */,
 				D08696AA26F93FE500A15DD8 /* Charts */,
-				D08696A626F93F1600A15DD8 /* HarmonicSignalsView.swift */,
-				D08696A826F93F3700A15DD8 /* PolyharmonicSignalsView.swift */,
+				D08696A626F93F1600A15DD8 /* SingleVoiceSignalsView.swift */,
+				D08696A826F93F3700A15DD8 /* MultipleVoicesSignalsView.swift */,
 				D00A417F26FA96D700ACE6E2 /* ModulatedSignalsView.swift */,
 				D0A1703726F8A190001608B9 /* ContentView.swift */,
 			);
@@ -120,8 +120,8 @@
 			children = (
 				D02810BB26FE96EF001086AA /* SignalType.swift */,
 				D00A417D26FA7E3900ACE6E2 /* Signal.swift */,
-				D08696A126F8D99800A15DD8 /* HarmonicSignal.swift */,
-				D00A417B26FA7DD800ACE6E2 /* PolyharmonicSignal.swift */,
+				D08696A126F8D99800A15DD8 /* SingleVoiceSignal.swift */,
+				D00A417B26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift */,
 				D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */,
 			);
 			path = Models;
@@ -254,18 +254,18 @@
 				D00A418026FA96D700ACE6E2 /* ModulatedSignalsView.swift in Sources */,
 				D00A417426FA70AC00ACE6E2 /* ColorExtensions.swift in Sources */,
 				D00A418226FA98AF00ACE6E2 /* ModulatedSignal.swift in Sources */,
-				D08696A226F8D99800A15DD8 /* HarmonicSignal.swift in Sources */,
-				D08696A926F93F3700A15DD8 /* PolyharmonicSignalsView.swift in Sources */,
-				D00A417126FA6B1000ACE6E2 /* HarmonicSignalCreator.swift in Sources */,
-				D00A417A26FA7D9000ACE6E2 /* PolyharmonicSignalCreator.swift in Sources */,
-				D00A417C26FA7DD800ACE6E2 /* PolyharmonicSignal.swift in Sources */,
+				D08696A226F8D99800A15DD8 /* SingleVoiceSignal.swift in Sources */,
+				D08696A926F93F3700A15DD8 /* MultipleVoicesSignalsView.swift in Sources */,
+				D00A417126FA6B1000ACE6E2 /* SingleVoiceSignalCreator.swift in Sources */,
+				D00A417A26FA7D9000ACE6E2 /* MultipleVoicesSignalCreator.swift in Sources */,
+				D00A417C26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift in Sources */,
 				D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */,
 				D02810BC26FE96EF001086AA /* SignalType.swift in Sources */,
 				D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */,
 				D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */,
 				D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */,
 				D02946AC26FF5703002EB5E8 /* SignalPlayer.swift in Sources */,
-				D08696A726F93F1600A15DD8 /* HarmonicSignalsView.swift in Sources */,
+				D08696A726F93F1600A15DD8 /* SingleVoiceSignalsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

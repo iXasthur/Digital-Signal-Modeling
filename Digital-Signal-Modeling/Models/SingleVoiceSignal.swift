@@ -1,5 +1,5 @@
 //
-//  HarmonicSignal.swift
+//  SingleVoiceSignal.swift
 //  Digital-Signal-Modeling
 //
 //  Created by Михаил Ковалевский on 20.09.2021.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct HarmonicSignal: Signal {
-    var name: String = "Harmonic signal"
+struct SingleVoiceSignal: Signal {
+    var name: String = "Single voice signal"
     
     var type: SignalType
     
@@ -17,7 +17,7 @@ struct HarmonicSignal: Signal {
     var frequency: Double?
     var duty: Double?
     
-    var formula: (_ s: HarmonicSignal, _ t: Double) -> Double
+    var formula: (_ s: SingleVoiceSignal, _ t: Double) -> Double
     
     func getValues(_ count: Int) -> [Double] {
         var values: [Double] = []
@@ -34,25 +34,25 @@ struct HarmonicSignal: Signal {
         return formula(s, 0)
     }
     
-    static func createDefault() -> HarmonicSignal {
-        return HarmonicSignal(
+    static func createDefault() -> SingleVoiceSignal {
+        return SingleVoiceSignal(
             type: .def,
-            formula: { (_: HarmonicSignal, t: Double) -> Double in
+            formula: { (_: SingleVoiceSignal, t: Double) -> Double in
                 return t
             }
         )
     }
     
-    static func createSine(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
+    static func createSine(amplitude: Double, startPhase: Double, frequency: Double) -> SingleVoiceSignal {
         let name = "Sine (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)))"
         
-        return HarmonicSignal(
+        return SingleVoiceSignal(
             name: name,
             type: .sine,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
-            formula: { (signal: HarmonicSignal, t: Double) -> Double in
+            formula: { (signal: SingleVoiceSignal, t: Double) -> Double in
                 let frequency: Double = signal.frequency!
                 let amplitude: Double = signal.amplitude!
                 let startPhase: Double = signal.startPhase!
@@ -61,19 +61,19 @@ struct HarmonicSignal: Signal {
             })
     }
     
-    static func createImpulse(amplitude: Double, startPhase: Double, frequency: Double, duty: Double) -> HarmonicSignal {
+    static func createImpulse(amplitude: Double, startPhase: Double, frequency: Double, duty: Double) -> SingleVoiceSignal {
         let name = "Impulse (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)), d: \(String(format: "%.2f", duty)))"
         
         let duty = 2 * Double.pi * duty
         
-        return HarmonicSignal(
+        return SingleVoiceSignal(
             name: name,
-            type: .impulse,
+            type: .pulse,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
             duty: duty,
-            formula: { (signal: HarmonicSignal, t: Double) -> Double in
+            formula: { (signal: SingleVoiceSignal, t: Double) -> Double in
                 let frequency: Double = signal.frequency!
                 let amplitude: Double = signal.amplitude!
                 let startPhase: Double = signal.startPhase!
@@ -84,16 +84,16 @@ struct HarmonicSignal: Signal {
             })
     }
     
-    static func createTriangle(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
+    static func createTriangle(amplitude: Double, startPhase: Double, frequency: Double) -> SingleVoiceSignal {
         let name = "Triangle (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)))"
         
-        return HarmonicSignal(
+        return SingleVoiceSignal(
             name: name,
             type: .triangle,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
-            formula: { (signal: HarmonicSignal, t: Double) -> Double in
+            formula: { (signal: SingleVoiceSignal, t: Double) -> Double in
                 let frequency: Double = signal.frequency!
                 let amplitude: Double = signal.amplitude!
                 let startPhase: Double = signal.startPhase!
@@ -104,16 +104,16 @@ struct HarmonicSignal: Signal {
             })
     }
     
-    static func createSaw(amplitude: Double, startPhase: Double, frequency: Double) -> HarmonicSignal {
+    static func createSaw(amplitude: Double, startPhase: Double, frequency: Double) -> SingleVoiceSignal {
         let name = "Saw (a: \(String(format: "%.2f", amplitude)), p: \(String(format: "%.2f", startPhase)), f: \(String(format: "%.2f", frequency)))"
         
-        return HarmonicSignal(
+        return SingleVoiceSignal(
             name: name,
             type: .saw,
             amplitude: amplitude,
             startPhase: startPhase,
             frequency: frequency,
-            formula: { (signal: HarmonicSignal, t: Double) -> Double in
+            formula: { (signal: SingleVoiceSignal, t: Double) -> Double in
                 let frequency: Double = signal.frequency!
                 let amplitude: Double = signal.amplitude!
                 let startPhase: Double = signal.startPhase!
@@ -124,14 +124,14 @@ struct HarmonicSignal: Signal {
             })
     }
     
-    static func createNoise(amplitude: Double) -> HarmonicSignal {
+    static func createNoise(amplitude: Double) -> SingleVoiceSignal {
         let name = "Noise (a: \(String(format: "%.2f", amplitude)))"
         
-        return HarmonicSignal(
+        return SingleVoiceSignal(
             name: name,
             type: .noise,
             amplitude: amplitude,
-            formula: { (signal: HarmonicSignal, t: Double) -> Double in
+            formula: { (signal: SingleVoiceSignal, t: Double) -> Double in
                 let amplitude: Double = signal.amplitude!
                 return Double.random(in: -amplitude...amplitude)
             })
