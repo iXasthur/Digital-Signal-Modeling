@@ -14,8 +14,13 @@ struct MultipleVoicesSignalsView: View {
     var body: some View {
         ScrollView {
             VStack {
-                SignalChart(signal: signal, title: "Multiple Voices")
-                    .padding(.top, 10)
+                if signal.signals.isEmpty {
+                    SignalChart(signal: signal, title: "Multiple Voices")
+                        .padding(.top, 10)
+                } else {
+                    SignalChartEx(signal: signal, title: "Multiple Voices")
+                        .padding(.top, 10)
+                }
                 
                 MultipleVoicesSignalCreator(signal: $signal)
                     .padding(.top, 10)

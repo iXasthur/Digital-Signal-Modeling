@@ -14,7 +14,7 @@ struct SingleVoiceSignalsView: View {
     var body: some View {
         ScrollView {
             VStack {
-                SignalChart(signal: signal, title: "Single Voice")
+                SignalChartEx(signal: signal, title: "Single Voice")
                     .padding(.top, 10)
                 
                 SingleVoiceSignalCreator(signal: $signal)

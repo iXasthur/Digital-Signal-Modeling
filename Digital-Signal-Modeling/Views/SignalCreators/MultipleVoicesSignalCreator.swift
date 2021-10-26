@@ -7,87 +7,25 @@
 
 import SwiftUI
 
-fileprivate struct SheetView: View {
-    
-    @Binding var isPresented: Bool
-    @Binding var signal: MultipleVoicesSignal
-    
-    let indexToEdit: Int?
-    
-    @State private var harmonicSignal: SingleVoiceSignal
-    
-    init(isPresented: Binding<Bool>, signal: Binding<MultipleVoicesSignal>, indexToEdit: Int?) {
-        self._isPresented = isPresented
-        self._signal = signal
-        self.indexToEdit = indexToEdit
-        
-        if indexToEdit != nil {
-            harmonicSignal = _signal.wrappedValue.signals[indexToEdit!]
-        } else {
-            harmonicSignal = .createDefault()
-        }
-    }
+fileprivate struct CreatorSheetBody: View {
+    @Binding var editedSignal: SingleVoiceSignal
 
     var body: some View {
         VStack {
-            HStack {
-                Button {
-                    isPresented.toggle()
-                    NSApp.mainWindow?.endSheet(NSApp.keyWindow!)
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.headline)
-                        .foregroundColor(.red)
-                        .frame(width: 20, height: 20, alignment: .leading)
-                        .contentShape(Rectangle())
-                }
-                .buttonStyle(PlainButtonStyle())
-
-                Spacer()
-                
-                Text(indexToEdit == nil ? "Add signal" : "Edit signal")
-                    .font(.headline)
-                
-                Spacer()
-               
-                Button {
-                    if indexToEdit != nil {
-                        signal.signals[indexToEdit!] = harmonicSignal
-                    } else {
-                        signal.signals.append(harmonicSignal)
-                    }
-                    
-                    isPresented.toggle()
-                    NSApp.mainWindow?.endSheet(NSApp.keyWindow!)
-                } label: {
-                    Image(systemName: "checkmark")
-                        .font(.headline)
-                        .foregroundColor(.accentColor)
-                        .frame(width: 20, height: 20, alignment: .trailing)
-                        .contentShape(Rectangle())
-                }
-                .buttonStyle(PlainButtonStyle())
-            }
-            
-            Divider()
-            
-            SingleVoiceSignalCreator(signal: $harmonicSignal)
+            SingleVoiceSignalCreator(signal: $editedSignal)
                 .padding(.top, 10)
-            
-            SignalChart(signal: harmonicSignal, title: nil)
+            SignalChartEx(signal: editedSignal, title: nil)
                 .padding(.top, 10)
-            
         }
-        .padding()
-        .frame(minWidth: 500)
     }
 }
 
 struct MultipleVoicesSignalCreator: View {
     
-    @State private var showingSheet = false
+    @State private var isShowingSheet = false
     
     @State private var indexToEdit: Int? = nil
+    @State private var buffSignal: SingleVoiceSignal = .createDefault()
     
     @Binding var signal: MultipleVoicesSignal
     
@@ -104,7 +42,9 @@ struct MultipleVoicesSignalCreator: View {
                     
                     Button {
                         indexToEdit = i
-                        showingSheet.toggle()
+                        buffSignal = signal.signals[i]
+                        
+                        isShowingSheet.toggle()
                     } label: {
                         Image(systemName: "pencil")
                             .font(.headline)
@@ -129,14 +69,28 @@ struct MultipleVoicesSignalCreator: View {
             
             Button {
                 indexToEdit = nil
-                showingSheet.toggle()
+                buffSignal = .createDefault()
+                
+                isShowingSheet.toggle()
             } label: {
                 Text("Add signal")
             }
             .padding(.top, 10)
         }
-        .sheet(isPresented: $showingSheet) {
-            SheetView(isPresented: $showingSheet, signal: $signal, indexToEdit: indexToEdit)
+        .sheet(isPresented: $isShowingSheet) {
+            SheetView(
+                isPresented: $isShowingSheet,
+                title: indexToEdit == nil ? "Add signal" : "Edit signal",
+                view: AnyView(CreatorSheetBody(editedSignal: $buffSignal)),
+                onCancel: {},
+                onAccept: {
+                    if indexToEdit != nil {
+                        signal.signals[indexToEdit!] = buffSignal
+                    } else {
+                        signal.signals.append(buffSignal)
+                    }
+                }
+            )
         }
     }
 }

@@ -14,13 +14,13 @@ struct ModulatedSignalsView: View {
     var body: some View {
         ScrollView {
             VStack {
-                SignalChart(signal: signal.message, title: "Message", compact: true)
+                SignalChartEx(signal: signal.message, title: "Message", compact: true)
                     .padding(.top, 10)
                 
                 SingleVoiceSignalCreator(signal: $signal.message, compact: true)
                     .padding(.top, 10)
                 
-                SignalChart(signal: signal.carrier, title: "Carrier", compact: true)
+                SignalChartEx(signal: signal.carrier, title: "Carrier", compact: true)
                     .padding(.top, 20)
                 
                 SingleVoiceSignalCreator(signal: $signal.carrier, compact: true)
@@ -34,7 +34,7 @@ struct ModulatedSignalsView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.top, 10)
                 
-                SignalChart(signal: signal, title: "Modulated", compact: true)
+                SignalChartEx(signal: signal, title: "Modulated", compact: true)
                     .padding(.top, 10)
                 
                 Spacer()

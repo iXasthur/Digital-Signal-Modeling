@@ -8,43 +8,18 @@
 import SwiftUI
 
 struct SignalChart: View {
-    
-    private let count = 4096
+    let count: Int = 4096
     
     let signal: Signal
     let title: String?
     let compact: Bool
+    var buttons: [HoldableButton]
     
-    private let player: SignalPlayer
-    private let buttons: [HoldableButton]
-    
-    init(signal: Signal, title: String?, compact: Bool = false) {
+    init(signal: Signal, title: String?, compact: Bool = false, buttons: [HoldableButton] = []) {
         self.signal = signal
         self.title = title
         self.compact = compact
-        
-        let player = SignalPlayer(signal: signal)
-        
-        self.player = player
-        
-        self.buttons = [
-            HoldableButton(
-                icon0: "play",
-                icon1: "play.fill",
-                onTap: {
-                    player.play()
-                }, onRelease: {
-                    player.stop()
-                }),
-            HoldableButton(
-                icon0: "square.and.arrow.up",
-                icon1: "square.and.arrow.up.fill",
-                onTap: {
-                    
-                }, onRelease: {
-                    player.save()
-                })
-        ]
+        self.buttons = buttons
     }
     
     var body: some View {
@@ -56,3 +31,5 @@ struct SignalChart: View {
         )
     }
 }
+
+
