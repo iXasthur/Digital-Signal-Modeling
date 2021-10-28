@@ -16,7 +16,7 @@ struct SheetView: View {
     let onAccept: (() -> Void)?
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack {
                 Button {
                     onCancel?()
@@ -54,14 +54,17 @@ struct SheetView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
+            .padding([.top, .horizontal])
             
             Divider()
+                .padding(.horizontal)
+                .padding(.top, 12)
             
             ScrollView {
                 view
+                    .padding([.bottom, .horizontal])
             }
         }
-        .padding()
         .frame(minWidth: 500, minHeight: 200, maxHeight: 500)
     }
 }
