@@ -111,8 +111,13 @@ fileprivate struct SpectrumSheetBody: View {
 }
 
 struct SignalChartEx: View {
+    #if DEBUG
     private let fourierDataValuesCount = 256
     private let filteredDataValuesCount = 256
+    #else
+    private let fourierDataValuesCount = 4096
+    private let filteredDataValuesCount = 4096
+    #endif
     
     let count: Int
     let signal: BaseSignal
