@@ -18,7 +18,6 @@
 		D02946AC26FF5703002EB5E8 /* SignalPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */; };
 		D0360B32272847CC00DD3E32 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0360B31272847CC00DD3E32 /* SheetView.swift */; };
 		D0360B342728602000DD3E32 /* SignalChartEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0360B332728602000DD3E32 /* SignalChartEx.swift */; };
-		D0360B38272B0E1400DD3E32 /* FourierSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0360B37272B0E1400DD3E32 /* FourierSignal.swift */; };
 		D0360B3A272B114E00DD3E32 /* BaseSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0360B39272B114E00DD3E32 /* BaseSignal.swift */; };
 		D04CD2C5272D57AD0027C1AF /* FourierData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04CD2C4272D57AD0027C1AF /* FourierData.swift */; };
 		D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086969D26F8D8FC00A15DD8 /* SignalChart.swift */; };
@@ -44,7 +43,6 @@
 		D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalPlayer.swift; sourceTree = "<group>"; };
 		D0360B31272847CC00DD3E32 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		D0360B332728602000DD3E32 /* SignalChartEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChartEx.swift; sourceTree = "<group>"; };
-		D0360B37272B0E1400DD3E32 /* FourierSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourierSignal.swift; sourceTree = "<group>"; };
 		D0360B39272B114E00DD3E32 /* BaseSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSignal.swift; sourceTree = "<group>"; };
 		D04CD2C4272D57AD0027C1AF /* FourierData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourierData.swift; sourceTree = "<group>"; };
 		D086969D26F8D8FC00A15DD8 /* SignalChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChart.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				D0360B39272B114E00DD3E32 /* BaseSignal.swift */,
-				D0360B37272B0E1400DD3E32 /* FourierSignal.swift */,
 				D04CD2C4272D57AD0027C1AF /* FourierData.swift */,
 				D08696A126F8D99800A15DD8 /* SingleVoiceSignal.swift */,
 				D00A417B26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift */,
@@ -272,7 +269,6 @@
 				D00A417A26FA7D9000ACE6E2 /* MultipleVoicesSignalCreator.swift in Sources */,
 				D00A417C26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift in Sources */,
 				D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */,
-				D0360B38272B0E1400DD3E32 /* FourierSignal.swift in Sources */,
 				D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */,
 				D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */,
 				D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */,

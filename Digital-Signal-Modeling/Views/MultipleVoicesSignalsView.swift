@@ -15,7 +15,10 @@ struct MultipleVoicesSignalsView: View {
         var sample = MultipleVoicesSignal()
         sample.signals = [
             SingleVoiceSignal.createSine(amplitude: 1, startPhase: 0, frequency: 1),
-            SingleVoiceSignal.createSine(amplitude: 1, startPhase: 0, frequency: 16)
+            SingleVoiceSignal.createTriangle(amplitude: 8, startPhase: Double.pi, frequency: 8),
+            SingleVoiceSignal.createSine(amplitude: 5, startPhase: Double.pi / 2, frequency: 2),
+            SingleVoiceSignal.createSine(amplitude: 8, startPhase: Double.pi / 3, frequency: 1),
+            SingleVoiceSignal.createSine(amplitude: 3, startPhase: Double.pi / 6, frequency: 1)
         ]
         return sample
     }

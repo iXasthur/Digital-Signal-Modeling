@@ -29,7 +29,6 @@ struct CustomTabView: View {
     }
     
     public var tabBar: some View {
-        
         HStack {
             Spacer()
             ForEach(0..<tabText.count) { index in
