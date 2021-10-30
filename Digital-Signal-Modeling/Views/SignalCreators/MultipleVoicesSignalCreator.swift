@@ -89,7 +89,9 @@ struct MultipleVoicesSignalCreator: View {
                     } else {
                         signal.signals.append(buffSignal)
                     }
-                }
+                },
+                idealWidth: nil,
+                idealHeight: nil
             )
         }
     }

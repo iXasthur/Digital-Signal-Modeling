@@ -14,6 +14,8 @@ struct SheetView: View {
     let view: AnyView
     let onCancel: (() -> Void)?
     let onAccept: (() -> Void)?
+    let idealWidth: CGFloat?
+    let idealHeight: CGFloat?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -65,6 +67,6 @@ struct SheetView: View {
                     .padding([.bottom, .horizontal])
             }
         }
-        .frame(minWidth: 500, minHeight: 200, maxHeight: 500)
+        .frame(minWidth: 500, idealWidth: idealWidth, minHeight: 200, idealHeight: idealHeight)
     }
 }

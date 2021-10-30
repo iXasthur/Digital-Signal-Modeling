@@ -8,41 +8,57 @@
 import SwiftUI
 
 fileprivate struct SpectrumSheetBody: View {
-    private let fourierData: FourierData
+    private let fourierDataDFT: FourierData
+    private let fourierDataFFT: FourierData
     
     init(signal: BaseSignal, count: Int) {
-        fourierData = FourierData(signalValues: signal.getValues(count))
-    }
-    
-    var amplitudeValues: [Double] {
-        return fourierData.getAmplitudeSpectrum()
-    }
-    
-    var phaseValues: [Double] {
-        return fourierData.getPhaseSpectrum()
-    }
-    
-    var restoredSignalValues: [Double] {
-        return fourierData.getRestoredSignal()
-    }
-    
-    var restoredSignalValuesIgnoringPhase: [Double] {
-        return fourierData.getRestoredSignalIgnoringPhase()
+        fourierDataDFT = FourierDataDFT(signalValues: signal.getValues(count))
+        fourierDataFFT = FourierDataFFT(signalValues: signal.getValues(count))
     }
     
     var body: some View {
-        VStack {
-            ChartLineView(values: amplitudeValues, title: "Amplitude Spectrum", compact: true)
-                .padding(.top, 10)
+        HStack {
+            VStack {
+                Text("DFT")
+                    .font(.headline)
+                    .padding(.top, 10)
+                
+                Divider()
+                
+                ChartLineView(values: fourierDataDFT.getAmplitudeSpectrum(), title: "Amplitude Spectrum", compact: true)
+                    .padding(.top, 10)
+                
+                ChartLineView(values: fourierDataDFT.getPhaseSpectrum(), title: "Phase Spectrum", compact: true)
+                    .padding(.top, 10)
+                
+                ChartLineView(values: fourierDataDFT.getRestoredSignal(), title: "Restored Signal", compact: true)
+                    .padding(.top, 10)
+                
+                ChartLineView(values: fourierDataDFT.getRestoredSignalIgnoringPhase(), title: "Restored Signal (w/o phase)", compact: true)
+                    .padding(.top, 10)
+            }
             
-            ChartLineView(values: phaseValues, title: "Phase Spectrum", compact: true)
-                .padding(.top, 10)
+            Spacer(minLength: 15)
             
-            ChartLineView(values: restoredSignalValues, title: "Restored Signal", compact: true)
-                .padding(.top, 10)
-            
-            ChartLineView(values: restoredSignalValuesIgnoringPhase, title: "Restored Signal (w/o phase)", compact: true)
-                .padding(.top, 10)
+            VStack {
+                Text("FFT")
+                    .font(.headline)
+                    .padding(.top, 10)
+                    
+                Divider()
+                
+                ChartLineView(values: fourierDataFFT.getAmplitudeSpectrum(), title: "Amplitude Spectrum", compact: true)
+                    .padding(.top, 10)
+                
+                ChartLineView(values: fourierDataFFT.getPhaseSpectrum(), title: "Phase Spectrum", compact: true)
+                    .padding(.top, 10)
+                
+                ChartLineView(values: fourierDataFFT.getRestoredSignal(), title: "Restored Signal", compact: true)
+                    .padding(.top, 10)
+                
+                ChartLineView(values: fourierDataFFT.getRestoredSignalIgnoringPhase(), title: "Restored Signal (w/o phase)", compact: true)
+                    .padding(.top, 10)
+            }
         }
     }
 }
@@ -114,7 +130,9 @@ struct SignalChartEx: View {
                     title: "Fourier Data (\(fourierDataValuesCount))",
                     view: AnyView(SpectrumSheetBody(signal: signal, count: fourierDataValuesCount)),
                     onCancel: nil,
-                    onAccept: {}
+                    onAccept: {},
+                    idealWidth: 800,
+                    idealHeight: 500
                 )
             }
     }
