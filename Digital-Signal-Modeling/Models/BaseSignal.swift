@@ -1,19 +1,19 @@
 //
-//  Signal.swift
+//  BaseSignal.swift
 //  Digital-Signal-Modeling
 //
-//  Created by Михаил Ковалевский on 21.09.2021.
+//  Created by Михаил Ковалевский on 28.10.2021.
 //
 
 import Foundation
 
-protocol Signal {
+protocol BaseSignal {
     var name: String { get }
     func getValues(_ count: Int) -> [Double]
     func getValuesF(_ count: Int) -> [Float]
 }
 
-extension Signal {
+extension BaseSignal {
     func getValuesF(_ count: Int) -> [Float] {
         var fvalues: [Float] = []
         self.getValues(count).forEach { v in

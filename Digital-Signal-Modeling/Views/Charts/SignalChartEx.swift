@@ -8,28 +8,38 @@
 import SwiftUI
 
 fileprivate struct SpectreSheetBody: View {
-    let signal: Signal
+    private let count = 4096
+    
+    let signal: FourierSignal
+    
+    var amplitudeValues: [Double] {
+        return []
+    }
+    
+    var phaseValues: [Double] {
+        return []
+    }
+    
+    var restoredSignalValues: [Double] {
+        return []
+    }
     
     var body: some View {
         VStack {
-            SignalChart(signal: signal, title: "Sine Spectre", compact: true)
+            ChartLineView(values: amplitudeValues, title: "Amplitude Spectre", compact: true)
                 .padding(.top, 10)
-            SignalChart(signal: signal, title: "Cosine Spectre", compact: true)
+            
+            ChartLineView(values: phaseValues, title: "Phase Spectre", compact: true)
                 .padding(.top, 10)
-            SignalChart(signal: signal, title: "Sine Spectre", compact: true)
-                .padding(.top, 10)
-            SignalChart(signal: signal, title: "Cosine Spectre", compact: true)
-                .padding(.top, 10)
-            SignalChart(signal: signal, title: "Sine Spectre", compact: true)
-                .padding(.top, 10)
-            SignalChart(signal: signal, title: "Cosine Spectre", compact: true)
+            
+            ChartLineView(values: restoredSignalValues, title: "Restored Signal", compact: true)
                 .padding(.top, 10)
         }
     }
 }
 
 struct SignalChartEx: View {
-    let signal: Signal
+    let signal: BaseSignal
     let title: String?
     let compact: Bool
     
@@ -37,7 +47,7 @@ struct SignalChartEx: View {
     
     @State private var isSpectreSheetShown = false
     
-    init(signal: Signal, title: String?, compact: Bool = false) {
+    init(signal: BaseSignal, title: String?, compact: Bool = false) {
         self.signal = signal
         self.title = title
         self.compact = compact
@@ -45,7 +55,9 @@ struct SignalChartEx: View {
     }
     
     var buttons: [HoldableButton] {
-        return [
+        var b: [HoldableButton] = []
+        
+        b.append(
             HoldableButton(
                 icon0: "play",
                 icon1: "play.fill",
@@ -54,15 +66,23 @@ struct SignalChartEx: View {
                 },
                 onRelease: {
                     player.stop()
-                }),
-            HoldableButton(
-                icon0: "square.stack.3d.up",
-                icon1: "square.stack.3d.up.fill",
-                onTap: {
-                    
-                }, onRelease: {
-                    isSpectreSheetShown.toggle()
-                }),
+                })
+        )
+        
+        if signal is FourierSignal {
+            b.append(
+                HoldableButton(
+                    icon0: "square.stack.3d.up",
+                    icon1: "square.stack.3d.up.fill",
+                    onTap: {
+                        
+                    }, onRelease: {
+                        isSpectreSheetShown.toggle()
+                    })
+            )
+        }
+        
+        b.append(
             HoldableButton(
                 icon0: "square.and.arrow.up",
                 icon1: "square.and.arrow.up.fill",
@@ -72,7 +92,9 @@ struct SignalChartEx: View {
                 onRelease: {
                     player.save()
                 })
-        ]
+        )
+        
+        return b
     }
     
     var body: some View {
@@ -81,7 +103,7 @@ struct SignalChartEx: View {
                 SheetView(
                     isPresented: $isSpectreSheetShown,
                     title: "Spectre",
-                    view: AnyView(SpectreSheetBody(signal: signal)),
+                    view: AnyView(SpectreSheetBody(signal: signal as! FourierSignal)),
                     onCancel: nil,
                     onAccept: {}
                 )

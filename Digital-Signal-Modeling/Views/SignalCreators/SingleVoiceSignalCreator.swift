@@ -20,7 +20,7 @@ struct SingleVoiceSignalCreator: View {
     @State private var frequency: Double
     @State private var dutyPercentage: Double
     
-    @State private var selectedSignalType: SignalType
+    @State private var selectedSignalType: SingleVoiceSignalType
     
     @Binding var signal: SingleVoiceSignal
     
@@ -47,7 +47,7 @@ struct SingleVoiceSignalCreator: View {
             frequency = SingleVoiceSignalCreator.defaultFrequency
             dutyPercentage = SingleVoiceSignalCreator.defaultDutyPercentage
             
-            selectedSignalType = SignalType.sine
+            selectedSignalType = SingleVoiceSignalType.sine
         }
     }
     
@@ -157,7 +157,7 @@ struct SingleVoiceSignalCreator: View {
     var body: some View {
         VStack {
             Picker("Signal type", selection: $selectedSignalType) {
-                ForEach(SignalType.allCases.filter({ t in
+                ForEach(SingleVoiceSignalType.allCases.filter({ t in
                     t != .def
                 })) { type in
                     Text(type.rawValue.capitalized).tag(type)

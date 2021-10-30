@@ -12,14 +12,14 @@ class SignalPlayer {
     
     let sampleRate = 44100
     
-    let signal: Signal
+    let signal: BaseSignal
     
     let audioEngine = AVAudioEngine()
     let playerNode = AVAudioPlayerNode()
     
     var prepared = false
     
-    init(signal: Signal) {
+    init(signal: BaseSignal) {
         self.signal = signal
     }
     

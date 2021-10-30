@@ -7,10 +7,21 @@
 
 import Foundation
 
-struct SingleVoiceSignal: Signal {
+enum SingleVoiceSignalType: String, CaseIterable, Identifiable {
+    case sine
+    case pulse
+    case triangle
+    case saw
+    case noise
+    case def
+
+    var id: String { self.rawValue }
+}
+
+struct SingleVoiceSignal: BaseSignal {
     var name: String = "Single voice signal"
     
-    var type: SignalType
+    var type: SingleVoiceSignalType
     
     var amplitude: Double?
     var startPhase: Double?
@@ -136,4 +147,6 @@ struct SingleVoiceSignal: Signal {
                 return Double.random(in: -amplitude...amplitude)
             })
     }
+    
+    
 }

@@ -24,7 +24,14 @@ fileprivate struct ChartLine: View {
     
     func lineChart(points:[Double], step:CGPoint) -> Path {
         var path = Path()
-        if (points.count < 2){
+        if points.count == 0 {
+            return path
+        }
+        
+        if points.count == 1 {
+            let center = CGPoint(x: frame.width / 2, y: frame.height/2)
+            let size: CGFloat = 1
+            path.addEllipse(in: .init(origin: center, size: .init(width: size, height: size)))
             return path
         }
         
@@ -86,10 +93,10 @@ fileprivate struct ChartLine: View {
 }
 
 struct ChartLineView: View {
-    var data: [Double]
-    var title: String?
-    var height: CGFloat? = 200
-    var actions: [HoldableButton] = []
+    let values: [Double]
+    let title: String?
+    var compact: Bool = false
+    var buttons: [HoldableButton] = []
     
     public var body: some View {
         GeometryReader{ geometry in
@@ -101,17 +108,17 @@ struct ChartLineView: View {
                     }
                     Spacer()
                     HStack {
-                        ForEach((0..<actions.count), id: \.self) {
-                            actions[$0]
+                        ForEach((0..<buttons.count), id: \.self) {
+                            buttons[$0]
                         }
                     }
                 }
                 HStack {
                     VStack(alignment: .trailing) {
-                        Text(String(format: "%.2f", data.max() ?? 0))
+                        Text(String(format: "%.2f", values.max() ?? 0))
                             .font(.headline)
                         Spacer()
-                        Text(String(format: "%.2f", data.min() ?? 0))
+                        Text(String(format: "%.2f", values.min() ?? 0))
                             .font(.headline)
                     }
                     
@@ -122,7 +129,7 @@ struct ChartLineView: View {
                             .frame(height: 1)
                         GeometryReader{ reader in
                             ChartLine(
-                                data: self.data,
+                                data: self.values,
                                 frame: CGRect(x: 0, y: 0, width: reader.frame(in: .local).width , height: reader.frame(in: .local).height)
                             )
                         }
@@ -135,6 +142,6 @@ struct ChartLineView: View {
                 }
             }
         }
-        .frame(height: height)
+        .frame(height: compact ? 140 : 200)
     }
 }
