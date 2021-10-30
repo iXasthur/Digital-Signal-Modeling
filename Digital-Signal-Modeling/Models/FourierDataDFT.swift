@@ -33,7 +33,11 @@ fileprivate struct FourierSpectrumDataDFT {
         
         Aj = hypot(Asj, Acj)
         f = atan2(Asj, Acj)
-
+        
+        if abs(Aj) < FourierDataDFT.threshold {
+            f = 0
+        }
+        
         return FourierSpectrumDataDFT(Aj: Aj, f: f)
     }
 }

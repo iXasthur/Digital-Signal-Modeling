@@ -9,6 +9,7 @@ import Foundation
 
 protocol FourierData {
     static func restoreSignal(amplitudeSpectrum: [Double], phaseSpectrum: [Double]) -> [Double]
+    static var threshold: Double { get }
     
     func getAmplitudeSpectrum() -> [Double]
     func getPhaseSpectrum() -> [Double]
@@ -17,6 +18,10 @@ protocol FourierData {
 }
 
 extension FourierData {
+    static var threshold: Double {
+        return 0.001
+    }
+    
     static func restoreSignal(amplitudeSpectrum: [Double], phaseSpectrum: [Double]) -> [Double] {
         if amplitudeSpectrum.count != phaseSpectrum.count {
             fatalError()

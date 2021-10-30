@@ -16,7 +16,10 @@ fileprivate struct FourierSpectrumDataFFT {
         var data: [FourierSpectrumDataFFT] = []
         fftValues.forEach { fftV in
             let Aj: Double = fftV.length * 2 / Double(fftValues.count)
-            let f: Double = -atan2(fftV.imaginary, fftV.real)
+            var f: Double = -atan2(fftV.imaginary, fftV.real)
+            if Aj < FourierDataFFT.threshold {
+                f = 0
+            }
             data.append(FourierSpectrumDataFFT(Aj: Aj, f: f))
         }
         return data
