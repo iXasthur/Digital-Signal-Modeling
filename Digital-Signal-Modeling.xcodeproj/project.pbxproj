@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		D00A418226FA98AF00ACE6E2 /* ModulatedSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A418126FA98AF00ACE6E2 /* ModulatedSignal.swift */; };
 		D01867DD272DBC1300A533AD /* FourierDataDFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01867DC272DBC1300A533AD /* FourierDataDFT.swift */; };
 		D01867DF272DBC2D00A533AD /* FourierDataFFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01867DE272DBC2D00A533AD /* FourierDataFFT.swift */; };
+		D01867E2272DC93400A533AD /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = D01867E1272DC93400A533AD /* ComplexModule */; };
 		D02946A926FF52BE002EB5E8 /* HoldableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02946A826FF52BE002EB5E8 /* HoldableButton.swift */; };
 		D02946AC26FF5703002EB5E8 /* SignalPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02946AB26FF5703002EB5E8 /* SignalPlayer.swift */; };
 		D0360B32272847CC00DD3E32 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0360B31272847CC00DD3E32 /* SheetView.swift */; };
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01867E2272DC93400A533AD /* ComplexModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +206,7 @@
 			);
 			name = "Digital-Signal-Modeling";
 			packageProductDependencies = (
+				D01867E1272DC93400A533AD /* ComplexModule */,
 			);
 			productName = "Digital-Signal-Modeling";
 			productReference = D0A1703226F8A190001608B9 /* Digital-Signal-Modeling.app */;
@@ -233,6 +236,7 @@
 			);
 			mainGroup = D0A1702926F8A190001608B9;
 			packageReferences = (
+				D01867E0272DC93400A533AD /* XCRemoteSwiftPackageReference "swift-numerics" */,
 			);
 			productRefGroup = D0A1703326F8A190001608B9 /* Products */;
 			projectDirPath = "";
@@ -475,6 +479,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D01867E0272DC93400A533AD /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D01867E1272DC93400A533AD /* ComplexModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D01867E0272DC93400A533AD /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = ComplexModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0A1702A26F8A190001608B9 /* Project object */;
 }

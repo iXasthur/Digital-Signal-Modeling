@@ -8,15 +8,16 @@
 import Foundation
 
 protocol FourierData {
+    static func restoreSignal(amplitudeSpectrum: [Double], phaseSpectrum: [Double]) -> [Double]
+    
     func getAmplitudeSpectrum() -> [Double]
     func getPhaseSpectrum() -> [Double]
+    func getRestoredSignal() -> [Double]
+    func getRestoredSignalIgnoringPhase() -> [Double]
 }
 
 extension FourierData {
-    func getRestoredSignal() -> [Double] {
-        let amplitudeSpectrum = getAmplitudeSpectrum()
-        let phaseSpectrum = getPhaseSpectrum()
-        
+    static func restoreSignal(amplitudeSpectrum: [Double], phaseSpectrum: [Double]) -> [Double] {
         if amplitudeSpectrum.count != phaseSpectrum.count {
             fatalError()
         }
@@ -44,29 +45,15 @@ extension FourierData {
         return values
     }
     
+    func getRestoredSignal() -> [Double] {
+        let amplitudeSpectrum = getAmplitudeSpectrum()
+        let phaseSpectrum = getPhaseSpectrum()
+        return Self.restoreSignal(amplitudeSpectrum: amplitudeSpectrum, phaseSpectrum: phaseSpectrum)
+    }
+    
     func getRestoredSignalIgnoringPhase() -> [Double] {
         let amplitudeSpectrum = getAmplitudeSpectrum()
-
-        let count = amplitudeSpectrum.count
-        
-        let N = Double(count)
-
-        var values: [Double] = []
-
-        for i in 0..<count {
-            var value: Double = 0
-
-            var sum: Double = 0
-            for j in 1..<(count / 2) {
-                let p = 2.0 * Double.pi * Double(j) * Double(i) / N
-                sum += amplitudeSpectrum[j] * cos(p)
-            }
-
-            value = (amplitudeSpectrum[0] / 2) + sum
-
-            values.append(value)
-        }
-
-        return values
+        let phaseSpectrum = Array<Double>.init(repeating: 0, count: amplitudeSpectrum.count)
+        return Self.restoreSignal(amplitudeSpectrum: amplitudeSpectrum, phaseSpectrum: phaseSpectrum)
     }
 }
