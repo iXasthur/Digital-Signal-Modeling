@@ -34,35 +34,4 @@ struct MultipleVoicesSignal: BaseSignal {
         return values
     }
     
-//    func getSinAmplitudeSpectre(signalValuesCount: Int) -> SignalSpectre {
-//        var spectreValues: [Double] = []
-//        for j in 1...signals.count {
-//            let values = signals[j - 1].getValues(signalValuesCount)
-//            let n = Double(values.count)
-//            
-//            var spectreValue: Double = 0
-//            for i in 0..<values.count {
-//                spectreValue += values[i] * sin(2.0 * Double.pi * Double(j) * Double(i) / n)
-//            }
-//            spectreValue *= 2.0 / n
-//            spectreValues.append(spectreValue)
-//        }
-//        return SignalSpectre(values: spectreValues)
-//    }
-//
-//    func getCosAmplitudeSpectre(signalValuesCount: Int) -> SignalSpectre {
-//        var spectreValues: [Double] = []
-//        for j in 1...signals.count {
-//            let values = signals[j - 1].getValues(signalValuesCount)
-//            let n = Double(values.count)
-//            
-//            var spectreValue: Double = 0
-//            for i in 0..<values.count {
-//                spectreValue += values[i] * cos(2.0 * Double.pi * Double(j) * Double(i) / n)
-//            }
-//            spectreValue *= 2.0 / n
-//            spectreValues.append(spectreValue)
-//        }
-//        return SignalSpectre(values: spectreValues)
-//    }
 }

@@ -148,5 +148,4 @@ struct SingleVoiceSignal: BaseSignal {
             })
     }
     
-    
 }
