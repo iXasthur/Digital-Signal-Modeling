@@ -19,8 +19,8 @@ struct ModulatedSignal: BaseSignal {
     
     var type: ModulationType = .amplitude
     
-    var message: SingleVoiceSignal = SingleVoiceSignal.createSine(amplitude: 1, startPhase: 0, frequency: 4)
-    var carrier: SingleVoiceSignal = SingleVoiceSignal.createSine(amplitude: 1, startPhase: 0, frequency: 15)
+    var message: SingleVoiceSignal = SingleVoiceSignal.createSine(amplitude: 0.9, startPhase: 0, frequency: 1)
+    var carrier: SingleVoiceSignal = SingleVoiceSignal.createSine(amplitude: 1, startPhase: 0, frequency: 40)
     
     private func getValuesFM(_ count: Int) -> [Double] {
         var values: [Double] = []
