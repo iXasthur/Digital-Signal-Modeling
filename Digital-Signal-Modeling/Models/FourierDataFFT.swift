@@ -8,8 +8,23 @@
 import Foundation
 import ComplexModule
 
+fileprivate struct FourierSpectrumDataFFT {
+    let Aj: Double
+    let f: Double
+
+    static func process(fftValues: [Complex<Double>]) -> [FourierSpectrumDataFFT] {
+        var data: [FourierSpectrumDataFFT] = []
+        fftValues.forEach { fftV in
+            let Aj: Double = fftV.length * 2 / Double(fftValues.count)
+            let f: Double = -atan2(fftV.imaginary, fftV.real)
+            data.append(FourierSpectrumDataFFT(Aj: Aj, f: f))
+        }
+        return data
+    }
+}
+
 class FourierDataFFT: FourierData {
-    private let fftValues: [Complex<Double>]
+    fileprivate let data: [FourierSpectrumDataFFT]
     
     init(signalValues: [Double]) {
         var values: [Complex<Double>] = []
@@ -19,26 +34,15 @@ class FourierDataFFT: FourierData {
         
         FourierDataFFT.fft(&values)
         
-        fftValues = values
+        data = FourierSpectrumDataFFT.process(fftValues: values)
     }
     
     func getAmplitudeSpectrum() -> [Double] {
-        var values: [Double] = []
-        fftValues.forEach { fftV in
-            var value: Double = fftV.length
-            value = value * 2 / Double(fftValues.count)
-            values.append(value)
-        }
-        return values
+        return data.map { $0.Aj }
     }
-    
+
     func getPhaseSpectrum() -> [Double] {
-        var values: [Double] = []
-        fftValues.forEach { fftV in
-            let value: Double = -atan2(fftV.imaginary, fftV.real)
-            values.append(value)
-        }
-        return values
+        return data.map { $0.f }
     }
     
     static func fft(_ values: inout [Complex<Double>]) {

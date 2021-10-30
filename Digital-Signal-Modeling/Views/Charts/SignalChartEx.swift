@@ -7,13 +7,60 @@
 
 import SwiftUI
 
+fileprivate struct FilteredSheetBody: View {
+    static private let minLeadingParamLabelWidth: CGFloat = 52
+    static private let minTrailingParamLabelWidth: CGFloat = 62
+    
+    private let count: Int
+    
+    @State private var signal: FilteredSignal
+    
+    init(signal: BaseSignal, count: Int) {
+        self.count = count
+        self._signal = State(initialValue: FilteredSignal(signal: signal))
+    }
+    
+    var body: some View {
+        VStack {
+            SignalChartEx(signal: signal, title: "Filtered", count: count)
+                .padding(.top, 10)
+            
+            HStack {
+                Text("L Bound")
+                    .frame(minWidth: FilteredSheetBody.minLeadingParamLabelWidth, alignment: .leading)
+                Slider(value: $signal.leftBound, in: 0...440)
+                Text("\(signal.leftBound, specifier: "%.1f") Hz")
+                    .onTapGesture {
+                        signal.leftBound = 0
+                    }
+                    .frame(minWidth: FilteredSheetBody.minTrailingParamLabelWidth, alignment: .leading)
+            }
+            
+            HStack {
+                Text("R Bound")
+                    .frame(minWidth: FilteredSheetBody.minLeadingParamLabelWidth, alignment: .leading)
+                Slider(value: $signal.rightBound, in: 0...440)
+                Text("\(signal.rightBound, specifier: "%.1f") Hz")
+                    .onTapGesture {
+                        signal.rightBound = 440
+                    }
+                    .frame(minWidth: FilteredSheetBody.minTrailingParamLabelWidth, alignment: .leading)
+            }
+        }
+    }
+}
+
 fileprivate struct SpectrumSheetBody: View {
+    private let count: Int
+    
     private let fourierDataDFT: FourierData
     private let fourierDataFFT: FourierData
     
     init(signal: BaseSignal, count: Int) {
-        fourierDataDFT = FourierDataDFT(signalValues: signal.getValues(count))
-        fourierDataFFT = FourierDataFFT(signalValues: signal.getValues(count))
+        self.count = count
+        
+        self.fourierDataDFT = FourierDataDFT(signalValues: signal.getValues(count))
+        self.fourierDataFFT = FourierDataFFT(signalValues: signal.getValues(count))
     }
     
     var body: some View {
@@ -65,7 +112,9 @@ fileprivate struct SpectrumSheetBody: View {
 
 struct SignalChartEx: View {
     private let fourierDataValuesCount = 256
+    private let filteredDataValuesCount = 256
     
+    let count: Int
     let signal: BaseSignal
     let title: String?
     let compact: Bool
@@ -73,8 +122,10 @@ struct SignalChartEx: View {
     private let player: SignalPlayer
     
     @State private var isSpectrumSheetShown = false
+    @State private var isFilteredSheetShown = false
     
-    init(signal: BaseSignal, title: String?, compact: Bool = false) {
+    init(signal: BaseSignal, title: String?, compact: Bool = false, count: Int = 4096) {
+        self.count = count
         self.signal = signal
         self.title = title
         self.compact = compact
@@ -109,6 +160,17 @@ struct SignalChartEx: View {
         
         b.append(
             HoldableButton(
+                icon0: "sun.max",
+                icon1: "sun.max.fill",
+                onTap: {
+                    
+                }, onRelease: {
+                    isFilteredSheetShown.toggle()
+                })
+        )
+        
+        b.append(
+            HoldableButton(
                 icon0: "square.and.arrow.up",
                 icon1: "square.and.arrow.up.fill",
                 onTap: {
@@ -123,7 +185,7 @@ struct SignalChartEx: View {
     }
     
     var body: some View {
-        SignalChart(signal: signal, title: title, compact: compact, buttons: buttons)
+        SignalChart(signal: signal, title: title, compact: compact, buttons: buttons, count: count)
             .sheet(isPresented: $isSpectrumSheetShown) {
                 SheetView(
                     isPresented: $isSpectrumSheetShown,
@@ -133,6 +195,17 @@ struct SignalChartEx: View {
                     onAccept: {},
                     idealWidth: 800,
                     idealHeight: 500
+                )
+            }
+            .sheet(isPresented: $isFilteredSheetShown) {
+                SheetView(
+                    isPresented: $isFilteredSheetShown,
+                    title: "Filtered (\(filteredDataValuesCount))",
+                    view: AnyView(FilteredSheetBody(signal: signal, count: filteredDataValuesCount)),
+                    onCancel: nil,
+                    onAccept: {},
+                    idealWidth: nil,
+                    idealHeight: nil
                 )
             }
     }

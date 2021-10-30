@@ -7,11 +7,11 @@
 
 import Foundation
 
-fileprivate struct FourierHarmonicDataDFT {
+fileprivate struct FourierSpectrumDataDFT {
     let Aj: Double
     let f: Double
 
-    static func process(values: [Double], j: Int) -> FourierHarmonicDataDFT {
+    static func process(values: [Double], j: Int) -> FourierSpectrumDataDFT {
         var Acj: Double = 0
         var Asj: Double = 0
         var Aj: Double = 0
@@ -34,17 +34,17 @@ fileprivate struct FourierHarmonicDataDFT {
         Aj = hypot(Asj, Acj)
         f = atan2(Asj, Acj)
 
-        return FourierHarmonicDataDFT(Aj: Aj, f: f)
+        return FourierSpectrumDataDFT(Aj: Aj, f: f)
     }
 }
 
 class FourierDataDFT: FourierData {
-    fileprivate let data: [FourierHarmonicDataDFT]
+    fileprivate let data: [FourierSpectrumDataDFT]
 
     init(signalValues: [Double]) {
-        var data: [FourierHarmonicDataDFT] = []
+        var data: [FourierSpectrumDataDFT] = []
         for j in 0..<signalValues.count {
-            data.append(FourierHarmonicDataDFT.process(values: signalValues, j: j))
+            data.append(FourierSpectrumDataDFT.process(values: signalValues, j: j))
         }
         self.data = data
     }
