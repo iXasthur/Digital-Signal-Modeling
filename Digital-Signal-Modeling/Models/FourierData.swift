@@ -19,7 +19,7 @@ protocol FourierData {
 
 extension FourierData {
     static var threshold: Double {
-        return 0.001
+        return 0.0001
     }
     
     static func restoreSignal(amplitudeSpectrum: [Double], phaseSpectrum: [Double]) -> [Double] {
