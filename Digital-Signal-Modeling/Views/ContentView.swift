@@ -32,6 +32,13 @@ struct ContentView: View {
                     AnyView(
                         ModulatedSignalsView()
                     )
+                ),
+                (
+                    "Correlation",
+                    "paperplane",
+                    AnyView(
+                        CorrelationView()
+                    )
                 )
             ]
         )

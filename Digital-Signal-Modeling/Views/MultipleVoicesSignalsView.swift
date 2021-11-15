@@ -38,7 +38,7 @@ struct MultipleVoicesSignalsView: View {
         ScrollView {
             VStack {
                 if signal.signals.isEmpty {
-                    SignalChart(signal: signal, title: "Multiple Voices", buttons: [sampleSignalButton], count: 0)
+                    SignalChart(signal: signal, title: "Multiple Voices", buttons: [[sampleSignalButton]], count: 0)
                         .padding(.top, 10)
                 } else {
                     SignalChartEx(signal: signal, title: "Multiple Voices")

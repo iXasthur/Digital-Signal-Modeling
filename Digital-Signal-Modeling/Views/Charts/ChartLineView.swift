@@ -96,7 +96,7 @@ struct ChartLineView: View {
     let values: [Double]
     let title: String?
     var compact: Bool = false
-    var buttons: [HoldableButton] = []
+    var buttons: [[HoldableButton]] = []
     
     public var body: some View {
         GeometryReader{ geometry in
@@ -108,8 +108,15 @@ struct ChartLineView: View {
                     }
                     Spacer()
                     HStack {
-                        ForEach((0..<buttons.count), id: \.self) {
-                            buttons[$0]
+                        ForEach((0..<buttons.count), id: \.self) { i0 in
+                            ForEach((0..<buttons[i0].count), id: \.self) { i1 in
+                                buttons[i0][i1]
+                            }
+                            if i0 != buttons.count - 1 {
+                                Divider()
+                                    .padding(.leading, 8)
+                                    .frame(height: 20)
+                            }
                         }
                     }
                 }

@@ -14,6 +14,8 @@ struct HoldableButton: View {
     var icon0: String
     var icon1: String
     
+    var color: Color = .accentColor
+    
     var onTap: () -> Void
     var onRelease: () -> Void
     
@@ -27,7 +29,7 @@ struct HoldableButton: View {
         } label: {
             Image(systemName: holding ? icon1 : icon0)
                 .font(.headline)
-                .foregroundColor(.accentColor)
+                .foregroundColor(color)
                 .frame(width: 20, height: 20, alignment: .trailing)
                 .contentShape(Rectangle())
         }

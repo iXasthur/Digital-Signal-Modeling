@@ -122,20 +122,22 @@ struct SignalChartEx: View {
     let count: Int
     let signal: BaseSignal
     let title: String?
-    let disableSound: Bool
     let compact: Bool
+    let additionalButtons: [[HoldableButton]]
+    let disableSound: Bool
     
     private let player: SignalPlayer
     
     @State private var isSpectrumSheetShown = false
     @State private var isFilteredSheetShown = false
     
-    init(signal: BaseSignal, title: String?, compact: Bool = false, disableSound: Bool = false, count: Int = 4096) {
+    init(signal: BaseSignal, title: String?, compact: Bool = false, additionalButtons: [[HoldableButton]] = [], disableSound: Bool = false, count: Int = 4096) {
         self.count = count
         self.signal = signal
         self.title = title
         self.disableSound = disableSound
         self.compact = compact
+        self.additionalButtons = additionalButtons
         self.player = SignalPlayer(signal: signal)
     }
     
@@ -193,8 +195,16 @@ struct SignalChartEx: View {
         return b
     }
     
+    var buttonsF: [[HoldableButton]] {
+        var b = [buttons]
+        additionalButtons.forEach { ab in
+            b.append(ab)
+        }
+        return b
+    }
+    
     var body: some View {
-        SignalChart(signal: signal, title: title, compact: compact, buttons: buttons, count: count)
+        SignalChart(signal: signal, title: title, compact: compact, buttons: buttonsF, count: count)
             .sheet(isPresented: $isSpectrumSheetShown) {
                 SheetView(
                     isPresented: $isSpectrumSheetShown,
