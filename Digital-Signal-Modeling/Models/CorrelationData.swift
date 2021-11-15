@@ -9,5 +9,5 @@ import Foundation
 
 protocol CorrelationData {
     func getValues() -> [Double]
-    func getTime() -> TimeInterval
+    func getTimeMs() -> Int
 }

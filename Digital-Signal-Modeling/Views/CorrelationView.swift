@@ -43,9 +43,9 @@ struct CorrelationView: View {
                     .padding(.top, 10)
                 SignalChartExE(signal: $signal1, count: count, title: "Second", compact: true)
                     .padding(.top, 10)
-                ChartLineView(values: correlationDataP.getValues(), title: "Correlation Plain (t: \(correlationDataP.getTime())s)", compact: true)
+                ChartLineView(values: correlationDataP.getValues(), title: "Correlation Plain (t: \(correlationDataP.getTimeMs())ms)", compact: true)
                     .padding(.top, 10)
-                ChartLineView(values: correlationDataF.getValues(), title: "Correlation Fast (t: \(correlationDataF.getTime())s)", compact: true)
+                ChartLineView(values: correlationDataF.getValues(), title: "Correlation Fast (t: \(correlationDataF.getTimeMs())ms)", compact: true)
                     .padding(.top, 10)
                 
                 Spacer()

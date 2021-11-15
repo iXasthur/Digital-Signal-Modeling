@@ -16,21 +16,26 @@ class CorrelationDataP: CorrelationData {
             fatalError()
         }
         
-        var data: [Double] = []
-        for i in 0..<signal0.count {
-            data.append(CorrelationDataP.corr(signal0[i], signal1[i]))
+        if !signal0.isEmpty {
+            var data: [Double] = []
+            for i in 0..<signal0.count {
+                data.append(CorrelationDataP.corr(signal0[i], signal1[i]))
+            }
+            
+            self.data = data
+            self.time = 100
+        } else {
+            self.data = []
+            self.time = 0
         }
-        
-        self.data = data
-        self.time = 100
     }
     
     func getValues() -> [Double] {
         return data
     }
     
-    func getTime() -> TimeInterval {
-        return time
+    func getTimeMs() -> Int {
+        return Int(time * 1000)
     }
     
     static func corr(_ v0: Double, _ v1: Double) -> Double {
