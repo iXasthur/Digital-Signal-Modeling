@@ -33,6 +33,9 @@
 		D0A1703826F8A190001608B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A1703726F8A190001608B9 /* ContentView.swift */; };
 		D0A1703A26F8A191001608B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A1703926F8A191001608B9 /* Assets.xcassets */; };
 		D0A1703D26F8A191001608B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A1703C26F8A191001608B9 /* Preview Assets.xcassets */; };
+		D0CDAAB52742F820009B25EE /* CorrelationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CDAAB42742F820009B25EE /* CorrelationData.swift */; };
+		D0CDAAB72742F9DC009B25EE /* CorrelationDataF.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CDAAB62742F9DC009B25EE /* CorrelationDataF.swift */; };
+		D0CDAAB92742F9EB009B25EE /* CorrelationDataP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CDAAB82742F9EB009B25EE /* CorrelationDataP.swift */; };
 		D0D5596A27429B27002E4E13 /* CorrelationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5596927429B27002E4E13 /* CorrelationView.swift */; };
 		D0D5596C2742AA8D002E4E13 /* SignalChartExE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5596B2742AA8D002E4E13 /* SignalChartExE.swift */; };
 		D0D5596E2742B72A002E4E13 /* EmptySignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5596D2742B729002E4E13 /* EmptySignal.swift */; };
@@ -67,6 +70,9 @@
 		D0A1703C26F8A191001608B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D0A1703E26F8A191001608B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A1703F26F8A191001608B9 /* Digital_Signal_Modeling.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Digital_Signal_Modeling.entitlements; sourceTree = "<group>"; };
+		D0CDAAB42742F820009B25EE /* CorrelationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrelationData.swift; sourceTree = "<group>"; };
+		D0CDAAB62742F9DC009B25EE /* CorrelationDataF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrelationDataF.swift; sourceTree = "<group>"; };
+		D0CDAAB82742F9EB009B25EE /* CorrelationDataP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrelationDataP.swift; sourceTree = "<group>"; };
 		D0D5596927429B27002E4E13 /* CorrelationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrelationView.swift; sourceTree = "<group>"; };
 		D0D5596B2742AA8D002E4E13 /* SignalChartExE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalChartExE.swift; sourceTree = "<group>"; };
 		D0D5596D2742B729002E4E13 /* EmptySignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySignal.swift; sourceTree = "<group>"; };
@@ -142,6 +148,9 @@
 				D04CD2C4272D57AD0027C1AF /* FourierData.swift */,
 				D01867DC272DBC1300A533AD /* FourierDataDFT.swift */,
 				D01867DE272DBC2D00A533AD /* FourierDataFFT.swift */,
+				D0CDAAB42742F820009B25EE /* CorrelationData.swift */,
+				D0CDAAB82742F9EB009B25EE /* CorrelationDataP.swift */,
+				D0CDAAB62742F9DC009B25EE /* CorrelationDataF.swift */,
 				D0D5596D2742B729002E4E13 /* EmptySignal.swift */,
 				D08696A126F8D99800A15DD8 /* SingleVoiceSignal.swift */,
 				D00A417B26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift */,
@@ -295,13 +304,16 @@
 				D00A417C26FA7DD800ACE6E2 /* MultipleVoicesSignal.swift in Sources */,
 				D0A1703626F8A190001608B9 /* Digital_Signal_ModelingApp.swift in Sources */,
 				D00A417626FA70F400ACE6E2 /* CustomTabView.swift in Sources */,
+				D0CDAAB72742F9DC009B25EE /* CorrelationDataF.swift in Sources */,
 				D08696A526F9330700A15DD8 /* ChartLineView.swift in Sources */,
 				D01867E8272DE31800A533AD /* FilteredSignal.swift in Sources */,
 				D086969E26F8D8FC00A15DD8 /* SignalChart.swift in Sources */,
+				D0CDAAB52742F820009B25EE /* CorrelationData.swift in Sources */,
 				D0D5596A27429B27002E4E13 /* CorrelationView.swift in Sources */,
 				D02946AC26FF5703002EB5E8 /* SignalPlayer.swift in Sources */,
 				D08696A726F93F1600A15DD8 /* SingleVoiceSignalsView.swift in Sources */,
 				D0D5596E2742B72A002E4E13 /* EmptySignal.swift in Sources */,
+				D0CDAAB92742F9EB009B25EE /* CorrelationDataP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
