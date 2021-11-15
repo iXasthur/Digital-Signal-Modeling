@@ -22,7 +22,7 @@ fileprivate struct FilteredSheetBody: View {
     
     var body: some View {
         VStack {
-            SignalChartEx(signal: signal, title: "Filtered", count: count)
+            SignalChartEx(signal: signal, title: "Filtered", disableSound: true, count: count)
                 .padding(.top, 10)
             
             HStack {
@@ -122,6 +122,7 @@ struct SignalChartEx: View {
     let count: Int
     let signal: BaseSignal
     let title: String?
+    let disableSound: Bool
     let compact: Bool
     
     private let player: SignalPlayer
@@ -129,10 +130,11 @@ struct SignalChartEx: View {
     @State private var isSpectrumSheetShown = false
     @State private var isFilteredSheetShown = false
     
-    init(signal: BaseSignal, title: String?, compact: Bool = false, count: Int = 4096) {
+    init(signal: BaseSignal, title: String?, compact: Bool = false, disableSound: Bool = false, count: Int = 4096) {
         self.count = count
         self.signal = signal
         self.title = title
+        self.disableSound = disableSound
         self.compact = compact
         self.player = SignalPlayer(signal: signal)
     }
@@ -140,17 +142,19 @@ struct SignalChartEx: View {
     var buttons: [HoldableButton] {
         var b: [HoldableButton] = []
         
-        b.append(
-            HoldableButton(
-                icon0: "play",
-                icon1: "play.fill",
-                onTap: {
-                    player.play()
-                },
-                onRelease: {
-                    player.stop()
-                })
-        )
+        if !disableSound {
+            b.append(
+                HoldableButton(
+                    icon0: "play",
+                    icon1: "play.fill",
+                    onTap: {
+                        player.play()
+                    },
+                    onRelease: {
+                        player.stop()
+                    })
+            )
+        }
         
         b.append(
             HoldableButton(
