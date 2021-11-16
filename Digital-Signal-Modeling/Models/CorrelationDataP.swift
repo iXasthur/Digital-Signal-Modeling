@@ -62,7 +62,7 @@ class CorrelationDataP: CorrelationData {
         }
         let denom = sqrt(sx * sy);
 
-//        for delay in -n..<n {
+//        for delay in (-n + 1)..<n {
 //            var sxy = 0.0;
 //
 //            for i in 0..<n {
