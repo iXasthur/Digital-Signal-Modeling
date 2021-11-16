@@ -26,6 +26,7 @@ struct SignalChartExE: View {
     var count: Int = 4096
     var title: String? = nil
     var compact: Bool = false
+    var hideLabels: Bool = false
     
     @State private var isShowingSheet = false
     @State private var buffSignal: SingleVoiceSignal = .createDefault()
@@ -70,9 +71,9 @@ struct SignalChartExE: View {
     var body: some View {
         VStack {
             if signal != nil {
-                SignalChartEx(signal: signal!, title: title, compact: compact, additionalButtons: [editButtons], disableSound: false, count: count)
+                SignalChartEx(signal: signal!, title: title, compact: compact, hideLabels: hideLabels, additionalButtons: [editButtons], disableSound: false, count: count)
             } else {
-                SignalChart(signal: EmptySignal(), title: title, compact: compact, buttons: [createButtons], count: count)
+                SignalChart(signal: EmptySignal(), title: title, compact: compact, hideLabels: hideLabels, buttons: [createButtons], count: count)
             }
         }
         .sheet(isPresented: $isShowingSheet) {

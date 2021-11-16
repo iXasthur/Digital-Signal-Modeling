@@ -39,13 +39,13 @@ struct CorrelationView: View {
         
         return ScrollView {
             VStack {
-                SignalChartExE(signal: $signal0, count: count, title: "First", compact: true)
+                SignalChartExE(signal: $signal0, count: count, title: "First", compact: true, hideLabels: true)
                     .padding(.top, 10)
-                SignalChartExE(signal: $signal1, count: count, title: "Second", compact: true)
+                SignalChartExE(signal: $signal1, count: count, title: "Second", compact: true, hideLabels: true)
                     .padding(.top, 10)
-                ChartLineView(values: correlationDataP.getValues(), title: "Correlation Plain (t: \(correlationDataP.getTimeMs())ms)", compact: true)
+                ChartLineView(values: correlationDataP.getValues(), title: "Correlation Plain (t: \(correlationDataP.getTimeMs())ms)", compact: true, hideLabels: true)
                     .padding(.top, 10)
-                ChartLineView(values: correlationDataF.getValues(), title: "Correlation Fast (t: \(correlationDataF.getTimeMs())ms)", compact: true)
+                ChartLineView(values: correlationDataF.getValues(), title: "Correlation Fast (t: \(correlationDataF.getTimeMs())ms)", compact: true, hideLabels: true)
                     .padding(.top, 10)
                 
                 Spacer()

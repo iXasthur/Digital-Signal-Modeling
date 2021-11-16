@@ -13,13 +13,15 @@ struct SignalChart: View {
     let signal: BaseSignal
     let title: String?
     let compact: Bool
-    var buttons: [[HoldableButton]]
+    let hideLabels: Bool
+    let buttons: [[HoldableButton]]
     
-    init(signal: BaseSignal, title: String?, compact: Bool = false, buttons: [[HoldableButton]] = [], count: Int) {
+    init(signal: BaseSignal, title: String?, compact: Bool = false, hideLabels: Bool = false, buttons: [[HoldableButton]] = [], count: Int) {
         self.count = count
         self.signal = signal
         self.title = title
         self.compact = compact
+        self.hideLabels = hideLabels
         self.buttons = buttons
     }
     
@@ -28,6 +30,7 @@ struct SignalChart: View {
             values: signal.getValues(count),
             title: title,
             compact: compact,
+            hideLabels: hideLabels,
             buttons: buttons
         )
     }

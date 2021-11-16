@@ -96,6 +96,7 @@ struct ChartLineView: View {
     let values: [Double]
     let title: String?
     var compact: Bool = false
+    var hideLabels: Bool = false
     var buttons: [[HoldableButton]] = []
     
     public var body: some View {
@@ -121,12 +122,14 @@ struct ChartLineView: View {
                     }
                 }
                 HStack {
-                    VStack(alignment: .trailing) {
-                        Text(String(format: "%.2f", values.max() ?? 0))
-                            .font(.headline)
-                        Spacer()
-                        Text(String(format: "%.2f", values.min() ?? 0))
-                            .font(.headline)
+                    if !hideLabels {
+                        VStack(alignment: .trailing) {
+                            Text(String(format: "%.2f", values.max() ?? 0))
+                                .font(.headline)
+                            Spacer()
+                            Text(String(format: "%.2f", values.min() ?? 0))
+                                .font(.headline)
+                        }
                     }
                     
                     VStack(spacing: 0) {
