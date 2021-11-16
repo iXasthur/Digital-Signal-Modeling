@@ -54,6 +54,12 @@ class FourierDataFFT: FourierData {
         return data.map { $0.f }
     }
     
+    func getRestoredSignal() -> [Double] {
+        var data = fftData
+        FourierDataFFT.fft(&data)
+        return data.map{ $0.real / Double(data.count) }.reversed()
+    }
+    
     static func restoreSignal(from vc: [Complex<Double>]) -> [Double] {
         return FourierDataFFT(fftData: vc).getRestoredSignal()
     }
@@ -78,9 +84,5 @@ class FourierDataFFT: FourierData {
             values[i] = even[i] + t
             values[i + values.count/2] = even[i] - t
         }
-    }
-    
-    static func inverse_fft(_ values: [Complex<Double>]) -> [Complex<Double>] {
-        fatalError()
     }
 }

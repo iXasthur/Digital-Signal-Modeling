@@ -62,16 +62,43 @@ class CorrelationDataP: CorrelationData {
         }
         let denom = sqrt(sx * sy);
 
-        for delay in -n..<n {
+//        for delay in -n..<n {
+//            var sxy = 0.0;
+//
+//            for i in 0..<n {
+//                let j = i + delay;
+//                if (j < 0 || j >= n) {
+//                    continue
+//                } else {
+//                    sxy += (v0[i] - mx) * (v1[j] - my);
+//                }
+//            }
+//
+//            data.append(sxy / denom)
+//        }
+        
+        for delay in ((-n + 1)...0) {
             var sxy = 0.0;
 
-            for i in 0..<n {
-                let j = i + delay;
-                if (j < 0 || j >= n) {
-                    continue
+            for q in 0..<n {
+                let j = (q + delay) % n;
+                let i = q % n;
+
+                let a0: Double
+                if i >= 0 {
+                    a0 = (v0[i] - mx)
                 } else {
-                    sxy += (v0[i] - mx) * (v1[j] - my);
+                    a0 = (v0[n - 1 + i] - mx)
                 }
+
+                let a1: Double
+                if j >= 0 {
+                    a1 = (v1[j] - my)
+                } else {
+                    a1 = (v1[n - 1 + j] - my)
+                }
+
+                sxy += a0 * a1;
             }
 
             data.append(sxy / denom)
