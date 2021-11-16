@@ -54,6 +54,7 @@ class FourierDataFFT: FourierData {
         return data.map { $0.f }
     }
     
+    // Faster than default implementation
     func getRestoredSignal() -> [Double] {
         var data = fftData
         FourierDataFFT.fft(&data)
