@@ -36,8 +36,8 @@ class CorrelationDataF: CorrelationData {
     }
     
     static func corr(_ v0: [Double], _ v1: [Double]) -> [Double] {
-        let v0c = FourierDataFFT.init(signalValues: v0).fftData
-        let v1c = FourierDataFFT.init(signalValues: v1).fftData.map { $0.conjugate }
+        let v0c = FourierDataFFT.init(signalValues: v0).fftData.map { $0.conjugate }
+        let v1c = FourierDataFFT.init(signalValues: v1).fftData
         
         var vc: [Complex<Double>] = []
         

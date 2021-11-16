@@ -11,8 +11,8 @@ struct CorrelationView: View {
     
     let count = 4096
     
-    @State private var signal0: SingleVoiceSignal? = .createSine(amplitude: 1, startPhase: 0, frequency: 5)
-    @State private var signal1: SingleVoiceSignal? = .createSine(amplitude: 1, startPhase: 0, frequency: 6)
+    @State private var signal0: SingleVoiceSignal? = .createSine(amplitude: 1, startPhase: 0, frequency: 1)
+    @State private var signal1: SingleVoiceSignal? = .createSine(amplitude: 1, startPhase: 0, frequency: 39)
     
     var signalValuesForCorrelation: (vs0: [Double], vs1: [Double]) {
         var va0: [Double] = []
