@@ -28,8 +28,14 @@ fileprivate struct FourierSpectrumDataFFT {
 
 class FourierDataFFT: FourierData {
     fileprivate let data: [FourierSpectrumDataFFT]
+    let fftData: [Complex<Double>]
     
-    init(signalValues: [Double]) {
+    fileprivate init(fftData: [Complex<Double>]) {
+        self.fftData = fftData
+        data = FourierSpectrumDataFFT.process(fftValues: self.fftData)
+    }
+    
+    convenience init(signalValues: [Double]) {
         var values: [Complex<Double>] = []
         signalValues.forEach { value in
             values.append(Complex<Double>(value))
@@ -37,7 +43,7 @@ class FourierDataFFT: FourierData {
         
         FourierDataFFT.fft(&values)
         
-        data = FourierSpectrumDataFFT.process(fftValues: values)
+        self.init(fftData: values)
     }
     
     func getAmplitudeSpectrum() -> [Double] {
@@ -46,6 +52,10 @@ class FourierDataFFT: FourierData {
 
     func getPhaseSpectrum() -> [Double] {
         return data.map { $0.f }
+    }
+    
+    static func restoreSignal(from vc: [Complex<Double>]) -> [Double] {
+        return FourierDataFFT(fftData: vc).getRestoredSignal()
     }
     
     static func fft(_ values: inout [Complex<Double>]) {
@@ -68,5 +78,9 @@ class FourierDataFFT: FourierData {
             values[i] = even[i] + t
             values[i + values.count/2] = even[i] - t
         }
+    }
+    
+    static func inverse_fft(_ values: [Complex<Double>]) -> [Complex<Double>] {
+        fatalError()
     }
 }

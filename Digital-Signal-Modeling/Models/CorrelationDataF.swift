@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ComplexModule
 
 class CorrelationDataF: CorrelationData {
     private let data: [Double]
@@ -18,7 +19,7 @@ class CorrelationDataF: CorrelationData {
         
         if !signal0.isEmpty {
             let start = Date().timeIntervalSince1970
-            self.data = []
+            self.data = CorrelationDataF.corr(signal0, signal1)
             self.time = Date().timeIntervalSince1970 - start
         } else {
             self.data = []
@@ -32,5 +33,18 @@ class CorrelationDataF: CorrelationData {
     
     func getTimeMs() -> Int {
         return Int(time * 1000)
+    }
+    
+    static func corr(_ v0: [Double], _ v1: [Double]) -> [Double] {
+        let v0c = FourierDataFFT.init(signalValues: v0).fftData
+        let v1c = FourierDataFFT.init(signalValues: v1).fftData.map { $0.conjugate }
+        
+        var vc: [Complex<Double>] = []
+        
+        for i in 0..<v0c.count {
+            vc.append(v0c[i] * v1c[i])
+        }
+        
+        return FourierDataFFT.restoreSignal(from: vc)
     }
 }
