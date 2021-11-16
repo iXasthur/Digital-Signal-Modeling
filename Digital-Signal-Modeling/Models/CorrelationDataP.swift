@@ -17,13 +17,9 @@ class CorrelationDataP: CorrelationData {
         }
         
         if !signal0.isEmpty {
-            var data: [Double] = []
-            for i in 0..<signal0.count {
-                data.append(CorrelationDataP.corr(signal0[i], signal1[i]))
-            }
-            
-            self.data = data
-            self.time = 100
+            let start = Date().timeIntervalSince1970
+            self.data = CorrelationDataP.corr(signal0, signal1)
+            self.time = Date().timeIntervalSince1970 - start
         } else {
             self.data = []
             self.time = 0
@@ -40,5 +36,47 @@ class CorrelationDataP: CorrelationData {
     
     static func corr(_ v0: Double, _ v1: Double) -> Double {
         return -1
+    }
+    
+    static func corr(_ v0: [Double], _ v1: [Double]) -> [Double] {
+        var data: [Double] = []
+
+        let n = v0.count
+
+        /* Calculate the mean of the two series x[], y[] */
+        var mx = 0.0;
+        var my = 0.0;
+        for i in 0..<n {
+            mx += v0[i];
+            my += v1[i];
+        }
+        mx /= Double(n);
+        my /= Double(n);
+
+        /* Calculate the denominator */
+        var sx = 0.0;
+        var sy = 0.0;
+        for i in 0..<n {
+            sx += (v0[i] - mx) * (v0[i] - mx);
+            sy += (v1[i] - my) * (v1[i] - my);
+        }
+        let denom = sqrt(sx * sy);
+
+        for delay in -n..<n {
+            var sxy = 0.0;
+
+            for i in 0..<n {
+                let j = i + delay;
+                if (j < 0 || j >= n) {
+                    continue
+                } else {
+                    sxy += (v0[i] - mx) * (v1[j] - my);
+                }
+            }
+
+            data.append(sxy / denom)
+        }
+
+        return data
     }
 }

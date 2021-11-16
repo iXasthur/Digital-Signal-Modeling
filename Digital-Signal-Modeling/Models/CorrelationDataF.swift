@@ -17,13 +17,9 @@ class CorrelationDataF: CorrelationData {
         }
         
         if !signal0.isEmpty {
-            var data: [Double] = []
-            for i in 0..<signal0.count {
-                data.append(Double(i))
-            }
-            
-            self.data = data
-            self.time = 20
+            let start = Date().timeIntervalSince1970
+            self.data = []
+            self.time = Date().timeIntervalSince1970 - start
         } else {
             self.data = []
             self.time = 0
