@@ -42,9 +42,10 @@ class CorrelationDataF: CorrelationData {
         var vc: [Complex<Double>] = []
         
         let n = Complex<Double>.init(v0.count)
+        let two = Complex<Double>.init(2)
         
         for i in 0..<v0c.count {
-            vc.append(v0c[i] * v1c[i] / n)
+            vc.append(two * v0c[i] * v1c[i] / n)
         }
         
         return FourierDataFFT.restoreSignal(from: vc)
